@@ -1,0 +1,79 @@
+{
+  "id": "No2",
+  "inputs": [
+    {
+      "data_0006": [
+        "data_0943"
+      ],
+      "format_1915": [
+        "format_3712"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "data_0006": [
+        "data_2600"
+      ],
+      "format_1915": [
+        "format_1915"
+      ]
+    }
+  ],
+  "solution_length": {
+    "min": 1,
+    "max": 10
+  },
+  "constraints": [
+    {
+      "constraintid": "use_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3631"
+          ]
+        }
+      ]
+    },
+    {
+      "constraintid": "use_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3501"
+          ]
+        }
+      ]
+    },
+    {
+      "constraintid": "prev_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3501"
+          ]
+        },
+        {
+          "operation_0004": [
+            "operation_3631"
+          ]
+        }
+      ]
+    },
+    {
+      "constraintid": "prev_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "proteinprophet"
+          ]
+        },
+        {
+          "operation_0004": [
+            "peptideprophet"
+          ]
+        }
+      ]
+    }
+  ]
+}
