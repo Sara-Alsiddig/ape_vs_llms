@@ -1,0 +1,101 @@
+{
+  "ontology_path": "/Users/sara/projects/ape_vs_llms/ape/APE_UseCases/MassSpectometry/edam.owl",
+  "ontologyPrefixIRI": "http://edamontology.org/",
+  "toolsTaxonomyRoot": "operation_0004",
+  "dataDimensionsTaxonomyRoots": [
+    "data_0006",
+    "format_1915"
+  ],
+  "tool_annotations_path": "/Users/sara/projects/ape_vs_llms/ape/APE_UseCases/MassSpectometry/bio.tools_fragment.json",
+  "strict_tool_annotations": "true",
+  "timeout_sec": "120",
+  "solutions": "1000",
+  "number_of_execution_scripts": "0",
+  "number_of_generated_graphs": "0",
+  "debug_mode": "true",
+  "use_workflow_input": "all",
+  "use_all_generated_data": "all",
+  "tool_seq_repeat": "false",
+  "inputs": [
+    {
+      "data_0006": [
+        "data_0943"
+      ],
+      "format_1915": [
+        "format_3712"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "data_0006": [
+        "data_0945"
+      ],
+      "format_1915": [
+        "format_1915"
+      ]
+    }
+  ],
+  "solution_length": {
+    "min": 1,
+    "max": 10
+  },
+  "constraints": [
+    {
+      "constraintid": "use_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3645"
+          ]
+        }
+      ]
+    },
+    {
+      "constraintid": "prev_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3645"
+          ]
+        },
+        {
+          "operation_0004": [
+            "operation_3649"
+          ]
+        }
+      ]
+    },
+    {
+      "constraintid": "prev_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3649"
+          ]
+        },
+        {
+          "operation_0004": [
+            "operation_3646"
+          ]
+        }
+      ]
+    },
+    {
+      "constraintid": "itn_m",
+      "parameters": [
+        {
+          "operation_0004": [
+            "operation_3649"
+          ]
+        },
+        {
+          "operation_0004": [
+            "operation_3649"
+          ]
+        }
+      ]
+    }
+  ],
+  "solutions_dir_path": "/Users/sara/projects/ape_vs_llms/results/no3"
+}
