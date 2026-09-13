@@ -4,3 +4,5 @@ ape/*.jar
 ape/APE_UseCases/
 .DS_Store
 *.env
+__pycache__/
+*.pyc
