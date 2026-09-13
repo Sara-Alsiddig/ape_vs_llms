@@ -60,6 +60,16 @@ data_ids = sorted(short_id(t) for t in data_terms)
 format_ids = sorted(short_id(t) for t in format_terms)
 operation_ids = sorted(short_id(t) for t in operation_terms)
 
+# Human-readable labels for EDAM terms, needed for a readable tool catalog.
+# Looked up over every term in the ontology, not just data_terms |
+# format_terms | operation_terms: a term can be deprecated (correctly
+# excluded from those domain-validity sets by closure()) while still
+# needing a label -- e.g. a tool annotation can reference a now-deprecated
+# term. IDs are unique across data/format/operation, so one merged dict is safe.
+term_labels = {}
+for term, label in g.subject_objects(RDFS.label):
+    if isinstance(term, URIRef) and str(term).startswith("http://edamontology.org/"):
+        term_labels[short_id(term)] = str(label)
 
 def file_hash(path):
     # Content hash lets domain_ref.json record exactly which source
@@ -86,6 +96,7 @@ metadata = {
         "data_terms": len(data_ids),
         "format_terms": len(format_ids),
         "operation_terms": len(operation_ids),
+        "term_labels": len(term_labels),
     },
 }
 
@@ -95,6 +106,7 @@ domain_ref = {
     "data_terms": data_ids,
     "format_terms": format_ids,
     "operation_terms": operation_ids,
+    "term_labels": term_labels, 
 }
 
 with open(OUTPUT_PATH, "w") as f:
