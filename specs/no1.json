@@ -1,5 +1,7 @@
 {
   "id": "No1",
+  "nl_description_source": "Lamprecht et al. 2019, Bioinformatics 35(4):656-664, Section 2.1, Use case no. 1 (verbatim)",
+  "nl_description": "Suppose a chemist has developed a new chromatographic column and wants to know how the chromatographic separation of the peptides depends on their amino acid composition (Meek, 1980). Using the column in a liquid chromatography tandem MS analysis of an Escherichia coli tryptic digest yields multiple MS spectra in the instrument vendor's Thermo RAW format. The chemist would like to get the Amino acid index (hydropathy), defined as 'hydrophobic, hydrophilic or charge properties of amino acids' for each of the 20 amino acids (generally, an Amino acid index is 'a table of 20 numerical values which quantify a property, e.g. physicochemical or biochemical, of the common amino acids'). The chemist knows that at least one peptide identification operation with validation of peptide-spectrum matches and one retention time prediction operation will be necessary to get the intended index, and that protein identification is not needed (our chemist has no interest in the proteins the peptides were derived from, indeed, they would have been fine with synthetic peptides).",
   "inputs": [
     {
       "data_0006": [

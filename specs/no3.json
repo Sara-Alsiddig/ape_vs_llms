@@ -1,5 +1,7 @@
 {
   "id": "No3",
+  "nl_description_source": "Lamprecht et al. 2019, Bioinformatics 35(4):656-664, Section 2.1, Use case no. 3 (verbatim)",
+  "nl_description": "The identification and localization of post-translational modifications is another frequent task in MS-based proteomics. Suppose our scientist is conducting a phosphoproteomic study and now wants to identify the phosphopeptides and localize the phosphorylations within the peptides, that is, a PTM identification after or concurrent with the peptide database search. To have some control of the false discovery rate (FDR) of both the peptide identifications and phosphorylation localization, a PTM localization and validation of peptide-spectrum matches are necessary.",
   "inputs": [
     {
       "data_0006": [
