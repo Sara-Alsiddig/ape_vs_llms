@@ -55,7 +55,6 @@ def short_id(uri):
     # keep just the <id> part for readability.
     return str(uri).rsplit("/", 1)[-1]
 
-tool_ids = sorted(t["id"] for t in tool_annotations["functions"])
 data_ids = sorted(short_id(t) for t in data_terms)
 format_ids = sorted(short_id(t) for t in format_terms)
 operation_ids = sorted(short_id(t) for t in operation_terms)
@@ -70,7 +69,34 @@ term_labels = {}
 for term, label in g.subject_objects(RDFS.label):
     if isinstance(term, URIRef) and str(term).startswith("http://edamontology.org/"):
         term_labels[short_id(term)] = str(label)
+def term_obj(uri):
+    short = short_id(uri)
+    return {"id": short, "label": term_labels.get(short)}
 
+tools = []
+for t in tool_annotations["functions"]:
+    operations = [term_obj(uri) for uri in t["taxonomyOperations"]]
+    inputs = [
+        {
+            "data": [term_obj(u) for u in slot["data_0006"]],
+            "format": [term_obj(u) for u in slot["format_1915"]],
+        }
+        for slot in t["inputs"]
+    ]
+    outputs = [
+        {
+            "data": [term_obj(u) for u in slot["data_0006"]],
+            "format": [term_obj(u) for u in slot["format_1915"]],
+        }
+        for slot in t["outputs"]
+    ]
+    tools.append({
+        "id": t["id"],
+        "label": t["label"],
+        "operations": operations,
+        "inputs": inputs,
+        "outputs": outputs,
+    })
 def file_hash(path):
     # Content hash lets domain_ref.json record exactly which source
     # files it was built from, for reproducibility.
@@ -92,7 +118,7 @@ metadata = {
         "format": "format_1915",
     },
     "counts": {
-        "tools": len(tool_ids),
+        "tools": len(tools),
         "data_terms": len(data_ids),
         "format_terms": len(format_ids),
         "operation_terms": len(operation_ids),
@@ -102,7 +128,7 @@ metadata = {
 
 domain_ref = {
     "metadata": metadata,
-    "tools": tool_ids,
+    "tools": tools,
     "data_terms": data_ids,
     "format_terms": format_ids,
     "operation_terms": operation_ids,

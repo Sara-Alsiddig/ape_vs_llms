@@ -22,26 +22,1396 @@
     }
   },
   "tools": [
-    "comet",
-    "extract_protein_names",
-    "gprofile_r",
-    "idconvert",
-    "isobar",
-    "libra",
-    "msconvert",
-    "mzxmlplot",
-    "pep3d",
-    "peptideprophet",
-    "peptideshaker",
-    "proteinprophet",
-    "protk",
-    "ptmprophet",
-    "rt",
-    "searchgui",
-    "ssrcalc",
-    "tandem2xml",
-    "xml2tsv",
-    "xtandem"
+    {
+      "id": "comet",
+      "label": "Comet",
+      "operations": [
+        {
+          "id": "operation_3646",
+          "label": "Peptide database search"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3244",
+              "label": "mzML"
+            },
+            {
+              "id": "format_3654",
+              "label": "mzXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gprofile_r",
+      "label": "gProfileR",
+      "operations": [
+        {
+          "id": "operation_2422",
+          "label": "Data retrieval"
+        },
+        {
+          "id": "operation_2497",
+          "label": "Pathway or network analysis"
+        },
+        {
+          "id": "operation_2436",
+          "label": "Gene-set enrichment analysis"
+        },
+        {
+          "id": "operation_3672",
+          "label": "Gene functional annotation"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_3021",
+              "label": "UniProt accession"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1964",
+              "label": "plain text format (unformatted)"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2295",
+              "label": "Gene ID"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1964",
+              "label": "plain text format (unformatted)"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_2600",
+              "label": "Pathway or network"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "idconvert",
+      "label": "idconvert",
+      "operations": [
+        {
+          "id": "operation_0335",
+          "label": "Formatting"
+        },
+        {
+          "id": "operation_1812",
+          "label": "Parsing"
+        },
+        {
+          "id": "operation_3434",
+          "label": "Conversion"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3747",
+              "label": "protXML"
+            },
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "isobar",
+      "label": "isobar",
+      "operations": [
+        {
+          "id": "operation_3641",
+          "label": "TMT-tag"
+        },
+        {
+          "id": "operation_3755",
+          "label": "PTM localisation"
+        },
+        {
+          "id": "operation_3630",
+          "label": "Protein quantification"
+        },
+        {
+          "id": "operation_2238",
+          "label": "Statistical calculation"
+        },
+        {
+          "id": "operation_3435",
+          "label": "Standardisation and normalisation"
+        },
+        {
+          "id": "operation_3639",
+          "label": "iTRAQ"
+        },
+        {
+          "id": "operation_3635",
+          "label": "Labeled quantification"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0944",
+              "label": "Peptide mass fingerprint"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3651",
+              "label": "MGF"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3752",
+              "label": "CSV"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_2603",
+              "label": "Expression data"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3468",
+              "label": "xls"
+            },
+            {
+              "id": "format_3508",
+              "label": "PDF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "libra",
+      "label": "Libra",
+      "operations": [
+        {
+          "id": "operation_3641",
+          "label": "TMT-tag"
+        },
+        {
+          "id": "operation_3639",
+          "label": "iTRAQ"
+        },
+        {
+          "id": "operation_3630",
+          "label": "Protein quantification"
+        },
+        {
+          "id": "operation_3635",
+          "label": "Labeled quantification"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_2603",
+              "label": "Expression data"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3747",
+              "label": "protXML"
+            },
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "msconvert",
+      "label": "msConvert",
+      "operations": [
+        {
+          "id": "operation_3695",
+          "label": "Filtering"
+        },
+        {
+          "id": "operation_0335",
+          "label": "Formatting"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2330",
+              "label": "Textual format"
+            },
+            {
+              "id": "format_3712",
+              "label": "Thermo RAW"
+            },
+            {
+              "id": "format_3654",
+              "label": "mzXML"
+            },
+            {
+              "id": "format_3244",
+              "label": "mzML"
+            },
+            {
+              "id": "format_3651",
+              "label": "MGF"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2330",
+              "label": "Textual format"
+            },
+            {
+              "id": "format_3712",
+              "label": "Thermo RAW"
+            },
+            {
+              "id": "format_3654",
+              "label": "mzXML"
+            },
+            {
+              "id": "format_3244",
+              "label": "mzML"
+            },
+            {
+              "id": "format_3651",
+              "label": "MGF"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mzxmlplot",
+      "label": "mzXMLplot",
+      "operations": [
+        {
+          "id": "operation_3694",
+          "label": "Mass spectrum visualisation"
+        },
+        {
+          "id": "operation_3203",
+          "label": "Chromatogram visualisation"
+        },
+        {
+          "id": "operation_0531",
+          "label": "Heat map generation"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3654",
+              "label": "mzXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_1636",
+              "label": "Heat map"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3603",
+              "label": "PNG"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pep3d",
+      "label": "Pep3D",
+      "operations": [
+        {
+          "id": "operation_3694",
+          "label": "Mass spectrum visualisation"
+        },
+        {
+          "id": "operation_3203",
+          "label": "Chromatogram visualisation"
+        },
+        {
+          "id": "operation_3441",
+          "label": "Plotting"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3654",
+              "label": "mzXML"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_2884",
+              "label": "Plot"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3603",
+              "label": "PNG"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0942",
+              "label": "2D PAGE image"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3603",
+              "label": "PNG"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peptideprophet",
+      "label": "PeptideProphet",
+      "operations": [
+        {
+          "id": "operation_3664",
+          "label": "Statistical modelling"
+        },
+        {
+          "id": "operation_3675",
+          "label": "Variant filtering"
+        },
+        {
+          "id": "operation_3631",
+          "label": "Peptide identification"
+        },
+        {
+          "id": "operation_3649",
+          "label": "Target-Decoy"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_2331",
+              "label": "HTML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_2331",
+              "label": "HTML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peptideshaker",
+      "label": "PeptideShaker",
+      "operations": [
+        {
+          "id": "operation_3755",
+          "label": "PTM localisation"
+        },
+        {
+          "id": "operation_3767",
+          "label": "Protein identification"
+        },
+        {
+          "id": "operation_0570",
+          "label": "Structure visualisation"
+        },
+        {
+          "id": "operation_2428",
+          "label": "Validation"
+        },
+        {
+          "id": "operation_3631",
+          "label": "Peptide identification"
+        },
+        {
+          "id": "operation_3694",
+          "label": "Mass spectrum visualisation"
+        },
+        {
+          "id": "operation_3501",
+          "label": "Enrichment analysis"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_2976",
+              "label": "Protein sequence"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1929",
+              "label": "FASTA"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2536",
+              "label": "Mass spectrometry data"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3651",
+              "label": "MGF"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_2992",
+              "label": "Protein structure image"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3579",
+              "label": "JPG"
+            },
+            {
+              "id": "format_3604",
+              "label": "SVG"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_3754",
+              "label": "GO-term enrichment data"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2330",
+              "label": "Textual format"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2969",
+              "label": "Sequence image"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3547",
+              "label": "Image format"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0896",
+              "label": "Protein report"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "proteinprophet",
+      "label": "ProteinProphet",
+      "operations": [
+        {
+          "id": "operation_3664",
+          "label": "Statistical modelling"
+        },
+        {
+          "id": "operation_3767",
+          "label": "Protein identification"
+        },
+        {
+          "id": "operation_3648",
+          "label": "Validation of peptide-spectrum matches"
+        },
+        {
+          "id": "operation_3644",
+          "label": "de Novo sequencing"
+        },
+        {
+          "id": "operation_3695",
+          "label": "Filtering"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_2331",
+              "label": "HTML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2332",
+              "label": "XML"
+            },
+            {
+              "id": "format_3747",
+              "label": "protXML"
+            },
+            {
+              "id": "format_2331",
+              "label": "HTML"
+            },
+            {
+              "id": "format_3468",
+              "label": "xls"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protk",
+      "label": "protk",
+      "operations": [
+        {
+          "id": "operation_2409",
+          "label": "Data handling"
+        },
+        {
+          "id": "operation_3631",
+          "label": "Peptide identification"
+        },
+        {
+          "id": "operation_3630",
+          "label": "Protein quantification"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_1233",
+              "label": "Sequence set (protein)"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1929",
+              "label": "FASTA"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            },
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2603",
+              "label": "Expression data"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ptmprophet",
+      "label": "PTMProphet",
+      "operations": [
+        {
+          "id": "operation_3755",
+          "label": "PTM localisation"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ssrcalc",
+      "label": "SSRCalc",
+      "operations": [
+        {
+          "id": "operation_3633",
+          "label": "Retention time prediction"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_2974",
+              "label": "Protein sequence (raw)"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2330",
+              "label": "Textual format"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2976",
+              "label": "Protein sequence"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2330",
+              "label": "Textual format"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_1520",
+              "label": "Peptide hydrophobic moment"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2331",
+              "label": "HTML"
+            },
+            {
+              "id": "format_3468",
+              "label": "xls"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2016",
+              "label": "Amino acid property"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2331",
+              "label": "HTML"
+            },
+            {
+              "id": "format_3468",
+              "label": "xls"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "searchgui",
+      "label": "SearchGUI",
+      "operations": [
+        {
+          "id": "operation_3767",
+          "label": "Protein identification"
+        },
+        {
+          "id": "operation_3694",
+          "label": "Mass spectrum visualisation"
+        },
+        {
+          "id": "operation_3647",
+          "label": "Blind peptide database search"
+        },
+        {
+          "id": "operation_3631",
+          "label": "Peptide identification"
+        },
+        {
+          "id": "operation_3646",
+          "label": "Peptide database search"
+        },
+        {
+          "id": "operation_3648",
+          "label": "Validation of peptide-spectrum matches"
+        },
+        {
+          "id": "operation_3644",
+          "label": "de Novo sequencing"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3651",
+              "label": "MGF"
+            },
+            {
+              "id": "format_3653",
+              "label": "pkl"
+            },
+            {
+              "id": "format_3652",
+              "label": "dta"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_2976",
+              "label": "Protein sequence"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1929",
+              "label": "FASTA"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3711",
+              "label": "X!Tandem XML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tandem2xml",
+      "label": "Tandem2XML",
+      "operations": [
+        {
+          "id": "operation_3267",
+          "label": "Sequence coordinate conversion"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3711",
+              "label": "X!Tandem XML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rt",
+      "label": "rt",
+      "operations": [
+        {
+          "id": "operation_3633",
+          "label": "Retention time prediction"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            },
+            {
+              "id": "format_3751",
+              "label": "DSV"
+            },
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_2016",
+              "label": "Amino acid property"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_2332",
+              "label": "XML"
+            },
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            },
+            {
+              "id": "format_2330",
+              "label": "Textual format"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xml2tsv",
+      "label": "xml2tsv",
+      "operations": [
+        {
+          "id": "operation_3434",
+          "label": "Conversion"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3655",
+              "label": "pepXML"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3475",
+              "label": "TSV"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xtandem",
+      "label": "XTandem",
+      "operations": [
+        {
+          "id": "operation_3647",
+          "label": "Blind peptide database search"
+        },
+        {
+          "id": "operation_3645",
+          "label": "PTM identification"
+        },
+        {
+          "id": "operation_3631",
+          "label": "Peptide identification"
+        },
+        {
+          "id": "operation_3646",
+          "label": "Peptide database search"
+        },
+        {
+          "id": "operation_3767",
+          "label": "Protein identification"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0943",
+              "label": "Mass spectrum"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3652",
+              "label": "dta"
+            },
+            {
+              "id": "format_3653",
+              "label": "pkl"
+            },
+            {
+              "id": "format_3654",
+              "label": "mzXML"
+            },
+            {
+              "id": "format_3834",
+              "label": "mzData"
+            },
+            {
+              "id": "format_3651",
+              "label": "MGF"
+            },
+            {
+              "id": "format_3711",
+              "label": "X!Tandem XML"
+            },
+            {
+              "id": "format_3244",
+              "label": "mzML"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "id": "data_0850",
+              "label": "Sequence set"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1929",
+              "label": "FASTA"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3711",
+              "label": "X!Tandem XML"
+            },
+            {
+              "id": "format_3247",
+              "label": "mzIdentML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extract_protein_names",
+      "label": "extract_protein_names",
+      "operations": [
+        {
+          "id": "operation_3434",
+          "label": "Conversion"
+        }
+      ],
+      "inputs": [
+        {
+          "data": [
+            {
+              "id": "data_0945",
+              "label": "Peptide identification"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_3747",
+              "label": "protXML"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "data": [
+            {
+              "id": "data_3021",
+              "label": "UniProt accession"
+            }
+          ],
+          "format": [
+            {
+              "id": "format_1964",
+              "label": "plain text format (unformatted)"
+            }
+          ]
+        }
+      ]
+    }
   ],
   "data_terms": [
     "data_0006",
