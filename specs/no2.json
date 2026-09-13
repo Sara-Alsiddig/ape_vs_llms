@@ -1,5 +1,7 @@
 {
   "id": "No2",
+  "nl_description_source": "Lamprecht et al. 2019, Bioinformatics 35(4):656-664, Section 2.1, Use case no. 2 (verbatim)",
+  "nl_description": "Next, our scientist faces the common task of protein identification and interpretation of lists of identified proteins by enrichment analysis, and again starts from MS spectra in the Thermo RAW format. After peptide database search and protein identification, the list of proteins identified via UniProt accessions should be analysed by gene-set enrichment analysis with respect to KEGG pathways and annotations, reporting KEGG pathway IDs and associated p- or q-values.",
   "inputs": [
     {
       "data_0006": [

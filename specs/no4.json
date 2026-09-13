@@ -1,5 +1,7 @@
 {
   "id": "No4",
+  "nl_description_source": "Lamprecht et al. 2019, Bioinformatics 35(4):656-664, Section 2.1, Use case no. 4 (verbatim)",
+  "nl_description": "Our scientist has now graduated to more challenging problem of protein quantitation. Additionally to the operations peptide database search and validation of peptide-spectrum matches, a quantification step is needed, specifically using iTRAQ.",
   "inputs": [
     {
       "data_0006": [
