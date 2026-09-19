@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from tool_catalog import load_term_labels, catalog_text
+from tool_catalog import load_term_labels, catalog_text, load_tools
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SPECS_DIR = REPO_ROOT / "specs"
@@ -64,17 +64,42 @@ def format_requirement(spec, term_labels):
         "outputs": [format_slot(slot, term_labels) for slot in spec["outputs"]],
     }
     
-def build_prompt(use_case_id):
+def build_prompt(use_case_id, variant="json"):
     spec = load_spec(use_case_id)
     term_labels = load_term_labels()
     requirement = format_requirement(spec, term_labels)
-
+    if variant == "json":
+        constraints_text = json.dumps(spec["constraints"], indent=2)
+    else:
+        tools_by_id = {t["id"]: t for t in load_tools()}
+        constraints_text = "\n".join(
+            "- " + constraint_to_sentence(c, term_labels, tools_by_id)
+            for c in spec["constraints"]
+        )
     sections = [
         TASK_FRAMING,
         "## Scenario\n" + spec["nl_description"],
         "## Required Input/Output\n" + json.dumps(requirement, indent=2),
-        "## Constraints\n" + json.dumps(spec["constraints"], indent=2),
+        "## Constraints\n" + constraints_text,
         "## Available Tools\n" + CATALOG_READING_NOTES + "\n" + catalog_text(),
         "## Output Format\n" + OUTPUT_SCHEMA_INSTRUCTIONS,
     ]
     return "\n\n".join(sections)
+
+def describe_param(param_id, term_labels, tools_by_id):
+    if param_id in tools_by_id:
+        return f'tool "{tools_by_id[param_id]["label"]}"'
+    return f'operation "{term_labels.get(param_id)}"'
+
+def constraint_to_sentence(constraint, term_labels, tools_by_id):
+    ids = [list(p.values())[0][0] for p in constraint["parameters"]]
+    names = [describe_param(i, term_labels, tools_by_id) for i in ids]
+    kind = constraint["constraintid"]
+    if kind == "use_m":
+        return f"The workflow must use a step for the {names[0]}."
+    if kind == "nuse_m":
+        return f"The workflow must not use any step for the {names[0]}."
+    if kind == "prev_m":
+        return f"If the {names[0]} is used, the {names[1]} must have been used earlier in the workflow."
+    if kind == "itn_m":
+        return f"If the {names[0]} is used, the {names[1]} must not be used later in the workflow."
