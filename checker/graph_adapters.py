@@ -12,7 +12,7 @@ import yaml
 
 CWL_RUN_PREFIX = "add-path-to-the-implementation/"
 CWL_RUN_SUFFIX = ".cwl"
-
+EDAM_PREFIX = "http://edamontology.org/"
 
 def _tool_id_from_cwl_run(run_value):
     run_value = run_value.strip()
@@ -20,6 +20,8 @@ def _tool_id_from_cwl_run(run_value):
         run_value = run_value[len(CWL_RUN_PREFIX):]
     if run_value.endswith(CWL_RUN_SUFFIX):
         run_value = run_value[: -len(CWL_RUN_SUFFIX)]
+    if run_value.startswith(EDAM_PREFIX):
+        run_value = run_value[len(EDAM_PREFIX):]
     return run_value
 
 

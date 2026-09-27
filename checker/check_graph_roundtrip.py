@@ -19,10 +19,10 @@ CWL_PATH = REPO_ROOT / "results/no1/CWL/candidate_workflow_1.cwl"
 # msConvert -> Comet -> PeptideProphet -> rt (verified by reading the file).
 EQUIVALENT_JSON = {
     "steps": [
-        {"id": "step1", "tool": "http://edamontology.org/msconvert", "in": ["workflow_input_1"]},
-        {"id": "step2", "tool": "http://edamontology.org/comet", "in": ["step1"]},
-        {"id": "step3", "tool": "http://edamontology.org/peptideprophet", "in": ["step2"]},
-        {"id": "step4", "tool": "http://edamontology.org/rt", "in": ["step3"]},
+        {"id": "step1", "tool": "msconvert", "in": ["workflow_input_1"]},
+        {"id": "step2", "tool": "comet", "in": ["step1"]},
+        {"id": "step3", "tool": "peptideprophet", "in": ["step2"]},
+        {"id": "step4", "tool": "rt", "in": ["step3"]},
     ],
     "workflow_output": "step4",
 }
@@ -30,10 +30,10 @@ EQUIVALENT_JSON = {
 # Same tools, wrong order -- must NOT match.
 WRONG_ORDER_JSON = {
     "steps": [
-        {"id": "step1", "tool": "http://edamontology.org/msconvert", "in": ["workflow_input_1"]},
-        {"id": "step2", "tool": "http://edamontology.org/peptideprophet", "in": ["step1"]},
-        {"id": "step3", "tool": "http://edamontology.org/comet", "in": ["step2"]},
-        {"id": "step4", "tool": "http://edamontology.org/rt", "in": ["step3"]},
+        {"id": "step1", "tool": "msconvert", "in": ["workflow_input_1"]},
+        {"id": "step2", "tool": "peptideprophet", "in": ["step1"]},
+        {"id": "step3", "tool": "comet", "in": ["step2"]},
+        {"id": "step4", "tool": "rt", "in": ["step3"]},
     ],
     "workflow_output": "step4",
 }
@@ -41,10 +41,10 @@ WRONG_ORDER_JSON = {
 # Same order, one tool substituted -- must NOT match.
 WRONG_TOOL_JSON = {
     "steps": [
-        {"id": "step1", "tool": "http://edamontology.org/msconvert", "in": ["workflow_input_1"]},
-        {"id": "step2", "tool": "http://edamontology.org/comet", "in": ["step1"]},
-        {"id": "step3", "tool": "http://edamontology.org/peptideprophet", "in": ["step2"]},
-        {"id": "step4", "tool": "http://edamontology.org/ptmprophet", "in": ["step3"]},
+        {"id": "step1", "tool": "msconvert", "in": ["workflow_input_1"]},
+        {"id": "step2", "tool": "comet", "in": ["step1"]},
+        {"id": "step3", "tool": "peptideprophet", "in": ["step2"]},
+        {"id": "step4", "tool": "ptmprophet", "in": ["step3"]},
     ],
     "workflow_output": "step4",
 }
