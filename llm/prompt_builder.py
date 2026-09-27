@@ -28,18 +28,21 @@ satisfied simultaneously (see rule above on multi-input steps).
 OUTPUT_SCHEMA_INSTRUCTIONS = """
 Respond with a JSON object describing your workflow, using exactly this schema:
 
-{
-  "steps": [
+{  
+"unsatisfiable": false,
+"steps": [
     {"id": "step1", "tool": "<tool id>", "in": []},
     {"id": "step2", "tool": "<tool id>", "in": []},
     {"id": "step3", "tool": "<tool id>", "in": ["step1", "step2"]}
-  ]
+]
 }
 
 Rules:
 - Each step must have a unique "id".
 - "tool" must be one of the exact tool IDs listed in the catalog above (e.g. "comet", "msconvert") — do not invent tool IDs or substitute a tool's label for its id.
 - "in" lists the ids of steps whose output feeds into this step. A step that consumes the workflow's initial input (nothing upstream) has an empty "in" list. A step can list more than one id in "in" when the tool it uses requires multiple inputs at once (e.g. step3 above, using a tool that needs both step1's and step2's outputs) — list every upstream step it depends on, not just one.
+- If, after checking the catalog and constraints carefully, no valid workflow exists using only the tools listed, set "unsatisfiable" to true and "steps" to an empty list. 
+- If a valid workflow exists, set "unsatisfiable" to false.
 - Respond with only the JSON object — no extra commentary.
 """
 
