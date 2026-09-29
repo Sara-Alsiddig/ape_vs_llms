@@ -1,0 +1,11 @@
+{
+"unsatisfiable": false,
+"steps": [
+    {"id": "step1", "tool": "msconvert", "in": []},
+    {"id": "step2", "tool": "comet", "in": ["step1"]},
+    {"id": "step3", "tool": "peptideprophet", "in": ["step2"]},
+    {"id": "step4", "tool": "xtandem", "in": ["step1"]},
+    {"id": "step5", "tool": "tandem2xml", "in": ["step4"]},
+    {"id": "step6", "tool": "ptmprophet", "in": ["step5"]}
+]
+}

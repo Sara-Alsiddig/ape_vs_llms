@@ -1,0 +1,4 @@
+input_1:
+  class: File
+  format: "http://edamontology.org/format_3712" # Thermo RAW
+  path: set_full_path_to_the_file_with_extension_here
