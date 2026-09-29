@@ -1,0 +1,12 @@
+```json
+{
+  "unsatisfiable": false,
+  "steps": [
+    {"id": "step1", "tool": "msconvert", "in": []},
+    {"id": "step2", "tool": "xtandem", "in": ["step1"]},
+    {"id": "step3", "tool": "tandem2xml", "in": ["step2"]},
+    {"id": "step4", "tool": "peptideprophet", "in": ["step3"]},
+    {"id": "step5", "tool": "ptmprophet", "in": ["step4"]}
+  ]
+}
+```
