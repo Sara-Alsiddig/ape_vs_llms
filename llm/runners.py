@@ -3,11 +3,11 @@ import openai
 
 CLAUDE_MODEL = "claude-opus-5-5"
 CLAUDE_EFFORT = "medium"
-CLAUDE_MAX_TOKENS = 16000  # placeholder -- revisit once we know real response sizes
+CLAUDE_MAX_TOKENS = 10000  
 
 OPENAI_MODEL = "gpt-6-astra" 
 OPENAI_EFFORT = "medium"
-OPENAI_MAX_TOKENS = 16000  # placeholder -- revisit once we know real response sizes
+OPENAI_MAX_TOKENS = 10000  
 
 claude_client = anthropic.Anthropic()
 openai_client = openai.OpenAI()
