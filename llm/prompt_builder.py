@@ -23,6 +23,13 @@ them together as one step, not a menu to choose from. Within one input or output
 listed data/format options are alternatives — any one of them satisfies that slot, not all of
 them at once. A tool with multiple separate input slots requires all of those slots to be
 satisfied simultaneously (see rule above on multi-input steps).
+
+Each operation also carries an "ancestors" list: the broader operation terms it is a more
+specific case of, taken from the EDAM ontology's subclass hierarchy. A tool that performs an
+operation also counts as performing every one of that operation's ancestors, so a constraint
+naming a broad operation is satisfied by any tool whose operation lists that term among its
+ancestors.
+
 """
 
 OUTPUT_SCHEMA_INSTRUCTIONS = """
