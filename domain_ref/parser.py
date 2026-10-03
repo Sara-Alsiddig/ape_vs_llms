@@ -26,6 +26,10 @@ edges = [
 children_of = defaultdict(list)
 for child, parent in edges:
     children_of[parent].append(child)
+    
+parents_of = defaultdict(list)
+for child, parent in edges:
+    parents_of[child].append(parent)
 
 def closure(root):
     # BFS over subClassOf edges. Deprecated terms are excluded
@@ -40,6 +44,21 @@ def closure(root):
                 visited.add(child)
                 frontier.append(child)
     return visited
+
+def ancestors(term):
+    # BFS upward over subClassOf edges -- the full chain of broader terms
+    # a term is a specific case of, not just its immediate parent.
+    visited = {term}
+    frontier = [term]
+    result = []
+    while frontier:
+        node = frontier.pop()
+        for parent in parents_of[node]:
+            if parent not in visited:
+                visited.add(parent)
+                result.append(parent)
+                frontier.append(parent)
+    return result
 
 data_terms = closure(URIRef("http://edamontology.org/data_0006"))
 
@@ -73,9 +92,18 @@ def term_obj(uri):
     short = short_id(uri)
     return {"id": short, "label": term_labels.get(short)}
 
+def operation_obj(uri):
+    # Operations also carry their full subClassOf ancestry, so a tool
+    # annotated with a specific operation (e.g. PTM localization) is
+    # visibly an instance of the broader terms a constraint may name
+    # (e.g. PTM identification) -- the same raw edam.owl facts APE reads.
+    obj = term_obj(uri)
+    obj["ancestors"] = [term_obj(a) for a in ancestors(URIRef(uri)) if a in operation_terms]
+    return obj
+
 tools = []
 for t in tool_annotations["functions"]:
-    operations = [term_obj(uri) for uri in t["taxonomyOperations"]]
+    operations = [operation_obj(uri) for uri in t["taxonomyOperations"]]
     inputs = [
         {
             "data": [term_obj(u) for u in slot["data_0006"]],

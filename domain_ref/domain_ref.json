@@ -28,7 +28,37 @@
       "operations": [
         {
           "id": "operation_3646",
-          "label": "Peptide database search"
+          "label": "Peptide database search",
+          "ancestors": [
+            {
+              "id": "operation_2421",
+              "label": "Database search"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -74,19 +104,82 @@
       "operations": [
         {
           "id": "operation_2422",
-          "label": "Data retrieval"
+          "label": "Data retrieval",
+          "ancestors": [
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_3908",
+              "label": "Information retrieval"
+            },
+            {
+              "id": "operation_0306",
+              "label": "Text mining"
+            },
+            {
+              "id": "operation_2423",
+              "label": "Prediction and recognition"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         },
         {
           "id": "operation_2497",
-          "label": "Pathway or network analysis"
+          "label": "Pathway or network analysis",
+          "ancestors": []
         },
         {
           "id": "operation_2436",
-          "label": "Gene-set enrichment analysis"
+          "label": "Gene-set enrichment analysis",
+          "ancestors": [
+            {
+              "id": "operation_2495",
+              "label": "Expression analysis"
+            },
+            {
+              "id": "operation_3501",
+              "label": "Enrichment analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3672",
-          "label": "Gene functional annotation"
+          "label": "Gene functional annotation",
+          "ancestors": [
+            {
+              "id": "operation_0361",
+              "label": "Sequence annotation"
+            },
+            {
+              "id": "operation_0226",
+              "label": "Annotation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -142,15 +235,41 @@
       "operations": [
         {
           "id": "operation_0335",
-          "label": "Formatting"
+          "label": "Formatting",
+          "ancestors": [
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_1812",
-          "label": "Parsing"
+          "label": "Parsing",
+          "ancestors": [
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3434",
-          "label": "Conversion"
+          "label": "Conversion",
+          "ancestors": [
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -204,31 +323,169 @@
       "operations": [
         {
           "id": "operation_3641",
-          "label": "TMT-tag"
+          "label": "TMT-tag",
+          "ancestors": [
+            {
+              "id": "operation_3635",
+              "label": "Labeled quantification"
+            },
+            {
+              "id": "operation_3630",
+              "label": "Protein quantification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_3755",
-          "label": "PTM localisation"
+          "label": "PTM localisation",
+          "ancestors": [
+            {
+              "id": "operation_3645",
+              "label": "PTM identification"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3630",
-          "label": "Protein quantification"
+          "label": "Protein quantification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_2238",
-          "label": "Statistical calculation"
+          "label": "Statistical calculation",
+          "ancestors": [
+            {
+              "id": "operation_3438",
+              "label": "Calculation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3435",
-          "label": "Standardisation and normalisation"
+          "label": "Standardisation and normalisation",
+          "ancestors": [
+            {
+              "id": "operation_2238",
+              "label": "Statistical calculation"
+            },
+            {
+              "id": "operation_3438",
+              "label": "Calculation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3639",
-          "label": "iTRAQ"
+          "label": "iTRAQ",
+          "ancestors": [
+            {
+              "id": "operation_3635",
+              "label": "Labeled quantification"
+            },
+            {
+              "id": "operation_3630",
+              "label": "Protein quantification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_3635",
-          "label": "Labeled quantification"
+          "label": "Labeled quantification",
+          "ancestors": [
+            {
+              "id": "operation_3630",
+              "label": "Protein quantification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -288,19 +545,111 @@
       "operations": [
         {
           "id": "operation_3641",
-          "label": "TMT-tag"
+          "label": "TMT-tag",
+          "ancestors": [
+            {
+              "id": "operation_3635",
+              "label": "Labeled quantification"
+            },
+            {
+              "id": "operation_3630",
+              "label": "Protein quantification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_3639",
-          "label": "iTRAQ"
+          "label": "iTRAQ",
+          "ancestors": [
+            {
+              "id": "operation_3635",
+              "label": "Labeled quantification"
+            },
+            {
+              "id": "operation_3630",
+              "label": "Protein quantification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_3630",
-          "label": "Protein quantification"
+          "label": "Protein quantification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_3635",
-          "label": "Labeled quantification"
+          "label": "Labeled quantification",
+          "ancestors": [
+            {
+              "id": "operation_3630",
+              "label": "Protein quantification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -346,11 +695,31 @@
       "operations": [
         {
           "id": "operation_3695",
-          "label": "Filtering"
+          "label": "Filtering",
+          "ancestors": [
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_0335",
-          "label": "Formatting"
+          "label": "Formatting",
+          "ancestors": [
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -432,15 +801,61 @@
       "operations": [
         {
           "id": "operation_3694",
-          "label": "Mass spectrum visualisation"
+          "label": "Mass spectrum visualisation",
+          "ancestors": [
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3203",
-          "label": "Chromatogram visualisation"
+          "label": "Chromatogram visualisation",
+          "ancestors": [
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_0531",
-          "label": "Heat map generation"
+          "label": "Heat map generation",
+          "ancestors": [
+            {
+              "id": "operation_3429",
+              "label": "Generation"
+            },
+            {
+              "id": "operation_0571",
+              "label": "Expression data visualisation"
+            },
+            {
+              "id": "operation_2495",
+              "label": "Expression analysis"
+            },
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -482,15 +897,36 @@
       "operations": [
         {
           "id": "operation_3694",
-          "label": "Mass spectrum visualisation"
+          "label": "Mass spectrum visualisation",
+          "ancestors": [
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3203",
-          "label": "Chromatogram visualisation"
+          "label": "Chromatogram visualisation",
+          "ancestors": [
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3441",
-          "label": "Plotting"
+          "label": "Plotting",
+          "ancestors": []
         }
       ],
       "inputs": [
@@ -560,19 +996,111 @@
       "operations": [
         {
           "id": "operation_3664",
-          "label": "Statistical modelling"
+          "label": "Statistical modelling",
+          "ancestors": [
+            {
+              "id": "operation_2238",
+              "label": "Statistical calculation"
+            },
+            {
+              "id": "operation_3438",
+              "label": "Calculation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3675",
-          "label": "Variant filtering"
+          "label": "Variant filtering",
+          "ancestors": [
+            {
+              "id": "operation_3218",
+              "label": "Sequencing quality control"
+            },
+            {
+              "id": "operation_2478",
+              "label": "Nucleic acid sequence analysis"
+            },
+            {
+              "id": "operation_2428",
+              "label": "Validation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2403",
+              "label": "Sequence analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_3631",
-          "label": "Peptide identification"
+          "label": "Peptide identification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3649",
-          "label": "Target-Decoy"
+          "label": "Target-Decoy",
+          "ancestors": [
+            {
+              "id": "operation_2428",
+              "label": "Validation"
+            },
+            {
+              "id": "operation_3646",
+              "label": "Peptide database search"
+            },
+            {
+              "id": "operation_2421",
+              "label": "Database search"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -622,31 +1150,129 @@
       "operations": [
         {
           "id": "operation_3755",
-          "label": "PTM localisation"
+          "label": "PTM localisation",
+          "ancestors": [
+            {
+              "id": "operation_3645",
+              "label": "PTM identification"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3767",
-          "label": "Protein identification"
+          "label": "Protein identification",
+          "ancestors": [
+            {
+              "id": "operation_2423",
+              "label": "Prediction and recognition"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_0570",
-          "label": "Structure visualisation"
+          "label": "Structure visualisation",
+          "ancestors": [
+            {
+              "id": "operation_2480",
+              "label": "Structure analysis"
+            },
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         },
         {
           "id": "operation_2428",
-          "label": "Validation"
+          "label": "Validation",
+          "ancestors": [
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3631",
-          "label": "Peptide identification"
+          "label": "Peptide identification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3694",
-          "label": "Mass spectrum visualisation"
+          "label": "Mass spectrum visualisation",
+          "ancestors": [
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3501",
-          "label": "Enrichment analysis"
+          "label": "Enrichment analysis",
+          "ancestors": [
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -762,23 +1388,96 @@
       "operations": [
         {
           "id": "operation_3664",
-          "label": "Statistical modelling"
+          "label": "Statistical modelling",
+          "ancestors": [
+            {
+              "id": "operation_2238",
+              "label": "Statistical calculation"
+            },
+            {
+              "id": "operation_3438",
+              "label": "Calculation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3767",
-          "label": "Protein identification"
+          "label": "Protein identification",
+          "ancestors": [
+            {
+              "id": "operation_2423",
+              "label": "Prediction and recognition"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3648",
-          "label": "Validation of peptide-spectrum matches"
+          "label": "Validation of peptide-spectrum matches",
+          "ancestors": []
         },
         {
           "id": "operation_3644",
-          "label": "de Novo sequencing"
+          "label": "de Novo sequencing",
+          "ancestors": [
+            {
+              "id": "operation_0230",
+              "label": "Sequence generation"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2403",
+              "label": "Sequence analysis"
+            },
+            {
+              "id": "operation_3429",
+              "label": "Generation"
+            }
+          ]
         },
         {
           "id": "operation_3695",
-          "label": "Filtering"
+          "label": "Filtering",
+          "ancestors": [
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -836,15 +1535,53 @@
       "operations": [
         {
           "id": "operation_2409",
-          "label": "Data handling"
+          "label": "Data handling",
+          "ancestors": [
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3631",
-          "label": "Peptide identification"
+          "label": "Peptide identification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3630",
-          "label": "Protein quantification"
+          "label": "Protein quantification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_3799",
+              "label": "Quantification"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -922,7 +1659,29 @@
       "operations": [
         {
           "id": "operation_3755",
-          "label": "PTM localisation"
+          "label": "PTM localisation",
+          "ancestors": [
+            {
+              "id": "operation_3645",
+              "label": "PTM identification"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -964,7 +1723,17 @@
       "operations": [
         {
           "id": "operation_3633",
-          "label": "Retention time prediction"
+          "label": "Retention time prediction",
+          "ancestors": [
+            {
+              "id": "operation_3438",
+              "label": "Calculation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -1042,31 +1811,168 @@
       "operations": [
         {
           "id": "operation_3767",
-          "label": "Protein identification"
+          "label": "Protein identification",
+          "ancestors": [
+            {
+              "id": "operation_2423",
+              "label": "Prediction and recognition"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3694",
-          "label": "Mass spectrum visualisation"
+          "label": "Mass spectrum visualisation",
+          "ancestors": [
+            {
+              "id": "operation_0337",
+              "label": "Visualisation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3647",
-          "label": "Blind peptide database search"
+          "label": "Blind peptide database search",
+          "ancestors": [
+            {
+              "id": "operation_3646",
+              "label": "Peptide database search"
+            },
+            {
+              "id": "operation_2421",
+              "label": "Database search"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         },
         {
           "id": "operation_3631",
-          "label": "Peptide identification"
+          "label": "Peptide identification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3646",
-          "label": "Peptide database search"
+          "label": "Peptide database search",
+          "ancestors": [
+            {
+              "id": "operation_2421",
+              "label": "Database search"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         },
         {
           "id": "operation_3648",
-          "label": "Validation of peptide-spectrum matches"
+          "label": "Validation of peptide-spectrum matches",
+          "ancestors": []
         },
         {
           "id": "operation_3644",
-          "label": "de Novo sequencing"
+          "label": "de Novo sequencing",
+          "ancestors": [
+            {
+              "id": "operation_0230",
+              "label": "Sequence generation"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_2403",
+              "label": "Sequence analysis"
+            },
+            {
+              "id": "operation_3429",
+              "label": "Generation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -1130,7 +2036,17 @@
       "operations": [
         {
           "id": "operation_3267",
-          "label": "Sequence coordinate conversion"
+          "label": "Sequence coordinate conversion",
+          "ancestors": [
+            {
+              "id": "operation_3434",
+              "label": "Conversion"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -1172,7 +2088,17 @@
       "operations": [
         {
           "id": "operation_3633",
-          "label": "Retention time prediction"
+          "label": "Retention time prediction",
+          "ancestors": [
+            {
+              "id": "operation_3438",
+              "label": "Calculation"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -1230,7 +2156,13 @@
       "operations": [
         {
           "id": "operation_3434",
-          "label": "Conversion"
+          "label": "Conversion",
+          "ancestors": [
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -1276,23 +2208,137 @@
       "operations": [
         {
           "id": "operation_3647",
-          "label": "Blind peptide database search"
+          "label": "Blind peptide database search",
+          "ancestors": [
+            {
+              "id": "operation_3646",
+              "label": "Peptide database search"
+            },
+            {
+              "id": "operation_2421",
+              "label": "Database search"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         },
         {
           "id": "operation_3645",
-          "label": "PTM identification"
+          "label": "PTM identification",
+          "ancestors": [
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3631",
-          "label": "Peptide identification"
+          "label": "Peptide identification",
+          "ancestors": [
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         },
         {
           "id": "operation_3646",
-          "label": "Peptide database search"
+          "label": "Peptide database search",
+          "ancestors": [
+            {
+              "id": "operation_2421",
+              "label": "Database search"
+            },
+            {
+              "id": "operation_3631",
+              "label": "Peptide identification"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            },
+            {
+              "id": "operation_0224",
+              "label": "Query and retrieval"
+            },
+            {
+              "id": "operation_2409",
+              "label": "Data handling"
+            }
+          ]
         },
         {
           "id": "operation_3767",
-          "label": "Protein identification"
+          "label": "Protein identification",
+          "ancestors": [
+            {
+              "id": "operation_2423",
+              "label": "Prediction and recognition"
+            },
+            {
+              "id": "operation_3214",
+              "label": "Spectral analysis"
+            },
+            {
+              "id": "operation_2945",
+              "label": "Analysis"
+            },
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
@@ -1376,7 +2422,13 @@
       "operations": [
         {
           "id": "operation_3434",
-          "label": "Conversion"
+          "label": "Conversion",
+          "ancestors": [
+            {
+              "id": "operation_0004",
+              "label": "Operation"
+            }
+          ]
         }
       ],
       "inputs": [
