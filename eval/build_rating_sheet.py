@@ -1,17 +1,24 @@
 import json
 import sys
+import networkx as nx
 from collections import Counter
 import random
 import csv
 SHUFFLE_SEED = 2026  # fixed so IDs are identical on every run
 from pathlib import Path
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.worksheet.datavalidation import DataValidation
 
-import networkx as nx
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = REPO_ROOT / "results"
 sys.path.insert(0, str(REPO_ROOT / "checker"))
+
 from graph_adapters import cwl_to_graph,  llm_json_to_graph
+sys.path.insert(0, str(REPO_ROOT / "llm"))
+from prompt_builder import load_spec, constraint_to_sentence
+from tool_catalog import load_term_labels, load_tools
 
 RATING_DIR = REPO_ROOT / "eval" / "rating"
 
@@ -103,6 +110,109 @@ def write_key(all_rows, all_skipped):
                 writer.writerow(["", use_case, model, source, "UNSAT (no workflow)"])
     return path
 
+ANY_FORMAT = "format_1915"  # EDAM root: the spec accepts any format
+
+def slot_text(slot, term_labels):
+    data = " or ".join(term_labels[d] for d in slot["data_0006"])
+    formats = [f for f in slot["format_1915"] if f != ANY_FORMAT]
+    fmt = " or ".join(term_labels[f] for f in formats) if formats else "any format"
+    return f"{data} (format: {fmt})"
+
+def task_context(use_case):
+    # Same scenario text and constraint sentences the LLMs got in the NL
+    # prompt variant, so raters judge against exactly the same task.
+    spec = load_spec(use_case)
+    term_labels = load_term_labels()
+    tools_by_id = {t["id"]: t for t in load_tools()}
+    return {
+        "scenario": spec["nl_description"],
+        "inputs": [slot_text(s, term_labels) for s in spec["inputs"]],
+        "outputs": [slot_text(s, term_labels) for s in spec["outputs"]],
+        "constraints": [constraint_to_sentence(c, term_labels, tools_by_id) for c in spec["constraints"]],
+    }
+
+def tool_labels():
+    return {t["id"]: t["label"] for t in load_tools()}
+
+# DRAFT wording from the 2026-09-04 meeting notes -- replace with the exact
+# anchors from the APE-in-the-Wild rating instrument before sending.
+SCALE = [
+    (0, "Does not make sense at all."),
+    (1, "Goes in the right general direction, but has clear flaws."),
+    (2, "Not what I would have expected, but looks interesting and worth trying."),
+    (3, "I know this workflow would work."),
+]
+TEXT_WIDTH = 100  # width of column B, in characters
+
+def wrapped(cell, text):
+    cell.value = text
+    cell.alignment = Alignment(wrap_text=True, vertical="top")
+
+def fit_height(ws, row, text):
+    # openpyxl can't auto-fit row heights, so estimate from text length.
+    lines = len(text) // TEXT_WIDTH + 1
+    ws.row_dimensions[row].height = 15 * lines
+
+def write_sheet(all_rows):
+    labels = tool_labels()
+    wb = Workbook()
+
+    info = wb.active
+    info.title = "Instructions"
+    info["A1"] = "Workflow plausibility rating"
+    info["A1"].font = Font(bold=True, size=14)
+    intro = ("Each tab describes one data-analysis task, followed by candidate workflows "
+             "for it. Please rate how plausible each workflow is as a solution to that "
+             "task, using the scale below. Comments are optional but very welcome.")
+    wrapped(info["B3"], intro)
+    fit_height(info, 3, intro)
+    info["A5"], info["B5"] = "Score", "Meaning"
+    info["A5"].font = info["B5"].font = Font(bold=True)
+    for i, (score, meaning) in enumerate(SCALE, start=6):
+        info.cell(i, 1, score)
+        wrapped(info.cell(i, 2), meaning)
+    info.column_dimensions["A"].width = 12
+    info.column_dimensions["B"].width = TEXT_WIDTH
+
+    for use_case, rows in all_rows.items():
+        ws = wb.create_sheet(title="No" + use_case[2:])
+        ctx = task_context(use_case)
+        context = ([("Task", ctx["scenario"]),
+                    ("Input", "; ".join(ctx["inputs"])),
+                    ("Output", "; ".join(ctx["outputs"]))]
+                   + [("Constraint", c) for c in ctx["constraints"]])
+        for label, text in context:
+            ws.append([label])
+            ws.cell(ws.max_row, 1).font = Font(bold=True)
+            wrapped(ws.cell(ws.max_row, 2), text)
+            fit_height(ws, ws.max_row, text)
+
+        ws.append([])
+        ws.append(["ID", "Workflow", "Rating (0-3)", "Comment"])
+        header_row = ws.max_row
+        for cell in ws[header_row]:
+            cell.font = Font(bold=True)
+
+        # Sources are deliberately left out: they only live in the key file.
+        for row_id, seq, _sources in rows:
+            ws.append([row_id, " → ".join(labels[t] for t in seq)])
+
+        rating_check = DataValidation(type="whole", operator="between",
+                                    formula1="0", formula2="3", showErrorMessage=True,
+                                    error="Please enter a whole number from 0 to 3.")
+        ws.add_data_validation(rating_check)
+        rating_check.add(f"C{header_row + 1}:C{ws.max_row}")
+
+        ws.freeze_panes = ws.cell(header_row + 1, 1)
+        ws.column_dimensions["A"].width = 12
+        ws.column_dimensions["B"].width = TEXT_WIDTH
+        ws.column_dimensions["C"].width = 14
+        ws.column_dimensions["D"].width = 50
+
+    path = RATING_DIR / "rating_sheet.xlsx"
+    wb.save(path)
+    return path
+
 if __name__ == "__main__":
     all_rows, all_skipped = {}, {}
     for uc in USE_CASES:
@@ -110,3 +220,5 @@ if __name__ == "__main__":
         all_rows[uc] = assign_ids(uc, groups)
     key_path = write_key(all_rows, all_skipped)
     print("wrote", key_path)
+    sheet_path = write_sheet(all_rows)
+    print("wrote", sheet_path)
