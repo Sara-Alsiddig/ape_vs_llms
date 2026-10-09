@@ -1,0 +1,156 @@
+row_id,use_case,system,source,sequence
+N1-01,no1,ape,candidate_workflow_16.cwl,msconvert -> comet -> peptideprophet -> peptideprophet -> ptmprophet -> rt
+N1-02,no1,ape,candidate_workflow_11.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> rt
+N1-03,no1,ape,candidate_workflow_5.cwl,msconvert -> comet -> peptideprophet -> idconvert -> rt
+N1-04,no1,ape,candidate_workflow_20.cwl,msconvert -> comet -> peptideprophet -> idconvert -> ptmprophet -> rt
+N1-05,no1,ape,candidate_workflow_15.cwl,msconvert -> comet -> ptmprophet -> peptideprophet -> peptideprophet -> rt
+N1-06,no1,ape,candidate_workflow_7.cwl,msconvert -> comet -> idconvert -> peptideprophet -> rt
+N1-07,no1,ape,candidate_workflow_13.cwl,msconvert -> msconvert -> comet -> idconvert -> peptideprophet -> rt
+N1-08,no1,ape,candidate_workflow_3.cwl,msconvert -> msconvert -> comet -> peptideprophet -> rt
+N1-09,no1,ape,candidate_workflow_8.cwl,msconvert -> comet -> peptideprophet -> peptideprophet -> rt
+N1-10,no1,ape,candidate_workflow_1.cwl,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,json/chatgpt/run1.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,json/chatgpt/run2.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,json/chatgpt/run3.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,json/chatgpt/run4.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,json/chatgpt/run5.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,json/claude/run1.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,json/claude/run2.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,json/claude/run3.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,json/claude/run4.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,json/claude/run5.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,nl/chatgpt/run1.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,nl/chatgpt/run2.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,nl/chatgpt/run3.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,nl/chatgpt/run4.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,chatgpt,nl/chatgpt/run5.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,nl/claude/run1.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,nl/claude/run2.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,nl/claude/run3.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,nl/claude/run4.txt,msconvert -> comet -> peptideprophet -> rt
+N1-10,no1,claude,nl/claude/run5.txt,msconvert -> comet -> peptideprophet -> rt
+N1-11,no1,ape,candidate_workflow_9.cwl,msconvert -> msconvert -> comet -> ptmprophet -> peptideprophet -> rt
+N1-12,no1,ape,candidate_workflow_18.cwl,msconvert -> comet -> idconvert -> peptideprophet -> ptmprophet -> rt
+N1-13,no1,ape,candidate_workflow_12.cwl,msconvert -> comet -> idconvert -> ptmprophet -> peptideprophet -> rt
+N1-14,no1,ape,candidate_workflow_10.cwl,msconvert -> msconvert -> msconvert -> comet -> peptideprophet -> rt
+N1-15,no1,ape,candidate_workflow_19.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> ptmprophet -> rt
+N1-16,no1,ape,candidate_workflow_17.cwl,msconvert -> comet -> ptmprophet -> peptideprophet -> ptmprophet -> rt
+N1-17,no1,ape,candidate_workflow_23.cwl,msconvert -> comet -> idconvert -> peptideprophet -> peptideprophet -> rt
+N1-18,no1,ape,candidate_workflow_2.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> rt
+N1-19,no1,ape,candidate_workflow_21.cwl,msconvert -> comet -> ptmprophet -> idconvert -> peptideprophet -> rt
+N1-20,no1,ape,candidate_workflow_4.cwl,msconvert -> comet -> ptmprophet -> peptideprophet -> rt
+N1-21,no1,ape,candidate_workflow_6.cwl,msconvert -> comet -> peptideprophet -> xml2tsv -> rt
+N1-22,no1,ape,candidate_workflow_24.cwl,msconvert -> comet -> idconvert -> idconvert -> peptideprophet -> rt
+N1-23,no1,ape,candidate_workflow_22.cwl,msconvert -> comet -> peptideprophet -> peptideprophet -> peptideprophet -> rt
+N1-24,no1,ape,candidate_workflow_14.cwl,msconvert -> msconvert -> comet -> peptideprophet -> peptideprophet -> rt
+N1-25,no1,ape,candidate_workflow_25.cwl,msconvert -> comet -> peptideprophet -> idconvert -> peptideprophet -> rt
+N2-01,no2,claude,json/claude/run1.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,json/claude/run2.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,json/claude/run3.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,json/claude/run4.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,json/claude/run5.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,nl/claude/run1.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,nl/claude/run2.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,nl/claude/run3.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,nl/claude/run4.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N2-01,no2,claude,nl/claude/run5.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> extract_protein_names -> gprofile_r
+N3-01,no3,ape,candidate_workflow_18.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> xml2tsv
+N3-02,no3,ape,candidate_workflow_5.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> xml2tsv
+N3-03,no3,ape,candidate_workflow_22.cwl,msconvert -> msconvert -> msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet
+N3-04,no3,ape,candidate_workflow_21.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> proteinprophet
+N3-05,no3,ape,candidate_workflow_12.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert
+N3-06,no3,ape,candidate_workflow_24.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert -> proteinprophet
+N3-07,no3,ape,candidate_workflow_7.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> proteinprophet
+N3-08,no3,ape,candidate_workflow_4.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet
+N3-09,no3,ape,candidate_workflow_15.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> xml2tsv
+N3-10,no3,ape,candidate_workflow_20.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert -> proteinprophet -> proteinprophet
+N3-11,no3,ape,candidate_workflow_6.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-12,no3,ape,candidate_workflow_9.cwl,msconvert -> msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet
+N3-13,no3,ape,candidate_workflow_11.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert -> proteinprophet
+N3-14,no3,ape,candidate_workflow_1.cwl,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,chatgpt,json/chatgpt/run1.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,chatgpt,json/chatgpt/run2.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,chatgpt,json/chatgpt/run3.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,chatgpt,json/chatgpt/run4.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,json/claude/run1.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,json/claude/run2.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,json/claude/run3.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,json/claude/run4.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,json/claude/run5.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,chatgpt,nl/chatgpt/run1.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,nl/claude/run1.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,nl/claude/run2.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,nl/claude/run3.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,nl/claude/run4.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-14,no3,claude,nl/claude/run5.txt,msconvert -> comet -> peptideprophet -> ptmprophet
+N3-15,no3,ape,candidate_workflow_19.cwl,msconvert -> msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-16,no3,ape,candidate_workflow_13.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> tandem2xml
+N3-17,no3,ape,candidate_workflow_23.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> proteinprophet -> proteinprophet
+N3-18,no3,ape,candidate_workflow_8.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> idconvert
+N3-19,no3,ape,candidate_workflow_2.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert
+N3-20,no3,ape,candidate_workflow_25.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> idconvert -> proteinprophet
+N3-21,no3,ape,candidate_workflow_16.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert -> idconvert
+N3-22,no3,ape,candidate_workflow_14.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> idconvert -> xml2tsv
+N3-23,no3,ape,candidate_workflow_17.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet -> idconvert
+N3-24,no3,ape,candidate_workflow_10.cwl,msconvert -> msconvert -> comet -> peptideprophet -> ptmprophet -> xml2tsv
+N3-25,no3,ape,candidate_workflow_3.cwl,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-25,no3,chatgpt,json/chatgpt/run5.txt,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-25,no3,chatgpt,nl/chatgpt/run2.txt,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-25,no3,chatgpt,nl/chatgpt/run3.txt,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-25,no3,chatgpt,nl/chatgpt/run4.txt,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N3-25,no3,chatgpt,nl/chatgpt/run5.txt,msconvert -> comet -> peptideprophet -> ptmprophet -> proteinprophet
+N4-01,no4,ape,candidate_workflow_19.cwl,msconvert -> comet -> ptmprophet -> proteinprophet -> peptideprophet -> libra
+N4-02,no4,ape,candidate_workflow_10.cwl,msconvert -> comet -> proteinprophet -> peptideprophet -> peptideprophet -> libra
+N4-03,no4,ape,candidate_workflow_11.cwl,msconvert -> comet -> peptideprophet -> peptideprophet -> peptideprophet -> libra
+N4-04,no4,ape,candidate_workflow_9.cwl,msconvert -> comet -> idconvert -> idconvert -> peptideprophet -> libra
+N4-05,no4,ape,candidate_workflow_23.cwl,msconvert -> comet -> proteinprophet -> ptmprophet -> peptideprophet -> libra
+N4-06,no4,ape,candidate_workflow_7.cwl,msconvert -> msconvert -> comet -> idconvert -> peptideprophet -> libra
+N4-07,no4,ape,candidate_workflow_18.cwl,msconvert -> comet -> idconvert -> proteinprophet -> peptideprophet -> libra
+N4-08,no4,ape,candidate_workflow_21.cwl,msconvert -> comet -> proteinprophet -> tandem2xml -> peptideprophet -> libra
+N4-09,no4,chatgpt,nl/chatgpt/run1.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> idconvert -> libra
+N4-09,no4,chatgpt,nl/chatgpt/run2.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> idconvert -> libra
+N4-09,no4,chatgpt,nl/chatgpt/run3.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> idconvert -> libra
+N4-09,no4,chatgpt,nl/chatgpt/run4.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> idconvert -> libra
+N4-09,no4,chatgpt,nl/chatgpt/run5.txt,msconvert -> comet -> peptideprophet -> proteinprophet -> idconvert -> libra
+N4-10,no4,ape,candidate_workflow_4.cwl,msconvert -> comet -> idconvert -> peptideprophet -> libra
+N4-11,no4,ape,candidate_workflow_6.cwl,msconvert -> comet -> ptmprophet -> peptideprophet -> libra
+N4-12,no4,ape,candidate_workflow_20.cwl,msconvert -> msconvert -> comet -> ptmprophet -> peptideprophet -> libra
+N4-13,no4,ape,candidate_workflow_25.cwl,msconvert -> comet -> ptmprophet -> ptmprophet -> peptideprophet -> libra
+N4-14,no4,ape,candidate_workflow_14.cwl,msconvert -> comet -> ptmprophet -> peptideprophet -> peptideprophet -> libra
+N4-15,no4,ape,candidate_workflow_12.cwl,msconvert -> msconvert -> comet -> peptideprophet -> peptideprophet -> libra
+N4-16,no4,ape,candidate_workflow_22.cwl,msconvert -> comet -> proteinprophet -> idconvert -> peptideprophet -> libra
+N4-16,no4,chatgpt,json/chatgpt/run1.txt,msconvert -> comet -> proteinprophet -> idconvert -> peptideprophet -> libra
+N4-16,no4,chatgpt,json/chatgpt/run2.txt,msconvert -> comet -> proteinprophet -> idconvert -> peptideprophet -> libra
+N4-16,no4,chatgpt,json/chatgpt/run3.txt,msconvert -> comet -> proteinprophet -> idconvert -> peptideprophet -> libra
+N4-16,no4,chatgpt,json/chatgpt/run4.txt,msconvert -> comet -> proteinprophet -> idconvert -> peptideprophet -> libra
+N4-16,no4,chatgpt,json/chatgpt/run5.txt,msconvert -> comet -> proteinprophet -> idconvert -> peptideprophet -> libra
+N4-17,no4,ape,candidate_workflow_17.cwl,msconvert -> comet -> peptideprophet -> proteinprophet -> peptideprophet -> libra
+N4-18,no4,ape,candidate_workflow_16.cwl,msconvert -> msconvert -> comet -> proteinprophet -> peptideprophet -> libra
+N4-19,no4,ape,candidate_workflow_24.cwl,msconvert -> comet -> idconvert -> ptmprophet -> peptideprophet -> libra
+N4-20,no4,ape,candidate_workflow_3.cwl,msconvert -> comet -> proteinprophet -> peptideprophet -> libra
+N4-21,no4,ape,candidate_workflow_1.cwl,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,json/claude/run1.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,json/claude/run2.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,json/claude/run3.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,json/claude/run4.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,json/claude/run5.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,nl/claude/run1.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,nl/claude/run2.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,nl/claude/run3.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,nl/claude/run4.txt,msconvert -> comet -> peptideprophet -> libra
+N4-21,no4,claude,nl/claude/run5.txt,msconvert -> comet -> peptideprophet -> libra
+N4-22,no4,ape,candidate_workflow_13.cwl,msconvert -> comet -> idconvert -> peptideprophet -> peptideprophet -> libra
+N4-23,no4,ape,candidate_workflow_8.cwl,msconvert -> msconvert -> msconvert -> comet -> peptideprophet -> libra
+N4-24,no4,ape,candidate_workflow_15.cwl,msconvert -> comet -> proteinprophet -> proteinprophet -> peptideprophet -> libra
+N4-25,no4,ape,candidate_workflow_2.cwl,msconvert -> msconvert -> comet -> peptideprophet -> libra
+N4-26,no4,ape,candidate_workflow_5.cwl,msconvert -> comet -> peptideprophet -> peptideprophet -> libra
+,no2,chatgpt,json/chatgpt/run1.txt,UNSAT (no workflow)
+,no2,chatgpt,json/chatgpt/run2.txt,UNSAT (no workflow)
+,no2,chatgpt,json/chatgpt/run3.txt,UNSAT (no workflow)
+,no2,chatgpt,json/chatgpt/run4.txt,UNSAT (no workflow)
+,no2,chatgpt,json/chatgpt/run5.txt,UNSAT (no workflow)
+,no2,chatgpt,nl/chatgpt/run1.txt,UNSAT (no workflow)
+,no2,chatgpt,nl/chatgpt/run2.txt,UNSAT (no workflow)
+,no2,chatgpt,nl/chatgpt/run3.txt,UNSAT (no workflow)
+,no2,chatgpt,nl/chatgpt/run4.txt,UNSAT (no workflow)
+,no2,chatgpt,nl/chatgpt/run5.txt,UNSAT (no workflow)
