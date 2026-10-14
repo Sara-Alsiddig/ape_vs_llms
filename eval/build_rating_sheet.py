@@ -4,12 +4,10 @@ import networkx as nx
 from collections import Counter
 import random
 import csv
-SHUFFLE_SEED = 2026  # fixed so IDs are identical on every run
 from pathlib import Path
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font
 from openpyxl.worksheet.datavalidation import DataValidation
-
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = REPO_ROOT / "results"
@@ -23,6 +21,7 @@ from tool_catalog import load_term_labels, load_tools
 RATING_DIR = REPO_ROOT / "eval" / "rating"
 
 USE_CASES = ["no1", "no2", "no3", "no4"]
+SHUFFLE_SEED = 2026  # fixed so IDs are identical on every run
 
 def graph_to_sequence(graph):
     # The sheet shows workflows as a linear tool sequence, which is only
@@ -133,14 +132,13 @@ def task_context(use_case):
 
 def tool_labels():
     return {t["id"]: t["label"] for t in load_tools()}
-
-# DRAFT wording from the 2026-09-04 meeting notes -- replace with the exact
-# anchors from the APE-in-the-Wild rating instrument before sending.
+# Rating scale verbatim from APE in the Wild (Kasalica et al. 2021,
+# J Proteome Res 20(4):2157-2165, doi:10.1021/acs.jproteome.0c00983).
 SCALE = [
-    (0, "Does not make sense at all."),
-    (1, "Goes in the right general direction, but has clear flaws."),
-    (2, "Not what I would have expected, but looks interesting and worth trying."),
-    (3, "I know this workflow would work."),
+    (0, "I know that it will not work"),
+    (1, "Might work, but does not seem very useful or has unnecessary steps"),
+    (2, "Interesting suggestion, seems viable, could work, worth trying"),
+    (3, "Good workflow, have seen it or similar before, I know it will work"),
 ]
 TEXT_WIDTH = 100  # width of column B, in characters
 
