@@ -110,6 +110,6 @@ def constraint_to_sentence(constraint, term_labels, tools_by_id):
     if kind == "nuse_m":
         return f"The workflow must not use any step for the {names[0]}."
     if kind == "prev_m":
-        return f"If the {names[0]} is used, the {names[1]} must have been used earlier in the workflow."
+        return f"If the {names[0]} is used, the {names[1]} must be used immediately before it, as the previous step in the workflow."
     if kind == "itn_m":
         return f"If the {names[0]} is used, the {names[1]} must not be used later in the workflow."
