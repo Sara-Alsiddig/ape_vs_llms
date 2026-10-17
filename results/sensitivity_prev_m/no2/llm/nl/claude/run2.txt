@@ -1,0 +1,6 @@
+```json
+{
+  "unsatisfiable": true,
+  "steps": []
+}
+```
