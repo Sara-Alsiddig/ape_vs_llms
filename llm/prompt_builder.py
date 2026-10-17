@@ -22,13 +22,21 @@ A tool's "operations" list describes everything that tool is known to do — it 
 them together as one step, not a menu to choose from. Within one input or output slot, multiple
 listed data/format options are alternatives — any one of them satisfies that slot, not all of
 them at once. A tool with multiple separate input slots requires all of those slots to be
-satisfied simultaneously (see rule above on multi-input steps).
+satisfied simultaneously (see rules on multi-input steps under Output Format below).
 
 Each operation also carries an "ancestors" list: the broader operation terms it is a more
 specific case of, taken from the EDAM ontology's subclass hierarchy. A tool that performs an
 operation also counts as performing every one of that operation's ancestors, so a constraint
 naming a broad operation is satisfied by any tool whose operation lists that term among its
 ancestors.
+
+Data and format terms in the input/output slots carry an "ancestors" list in the same way. A
+tool output annotated with a general type can be any more specific type below it, and an input
+slot accepts its listed type or any more specific one. So an output can feed an input when, for
+both data and format, the two terms are the same or one appears among the other's ancestors —
+e.g. an "XML" output can feed an input requiring "pepXML", because pepXML lists XML among its
+ancestors. The same applies to the required workflow input and output above: "Data" and "Format"
+are the roots of these hierarchies, so a required "Format" accepts any format.
 
 """
 
