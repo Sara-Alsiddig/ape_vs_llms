@@ -1,9 +1,0 @@
-{
-  "unsatisfiable": false,
-  "steps": [
-    {"id": "step1", "tool": "msconvert", "in": []},
-    {"id": "step2", "tool": "comet", "in": ["step1"]},
-    {"id": "step3", "tool": "peptideprophet", "in": ["step2"]},
-    {"id": "step4", "tool": "rt", "in": ["step3"]}
-  ]
-}
