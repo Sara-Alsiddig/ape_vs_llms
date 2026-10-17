@@ -53,6 +53,30 @@ Rules:
 - Respond with only the JSON object — no extra commentary.
 """
 
+# APE 2.6.0's own description of each constraint template
+# from the jar (nl/uu/cs/ape/constraints/ConstraintFactory), so the JSON
+# variant is told the same semantics APE uses. The bracket in prev_m is a bug fix:
+# APE's "a previous operation" reads ambiguously, but APE enforces the
+# immediately preceding step (see the NL sentence in constraint_to_sentence).
+APE_CONSTRAINT_DEFINITIONS = {
+    "use_m": "Use operation in the solution.",
+    "nuse_m": "Do not use operation in the solution.",
+    "prev_m": "If 1st operation is used, then we must have used 2nd operation as a previous operation in the sequence (i.e. immediately before it).",
+    "itn_m": "If 1st operation is used, then 2nd operation cannot be used subsequently.",
+}
+
+def constraint_definitions(constraints):
+    # One definition line per constraint ID used in this spec, in order of
+    # first appearance. An ID missing from the dict raises KeyError on purpose.
+    ids = dict.fromkeys(c["constraintid"] for c in constraints)
+    lines = [f'- "{i}": {APE_CONSTRAINT_DEFINITIONS[i]}' for i in ids]
+    return (
+        'Each "constraintid" names an APE constraint template, defined below. '
+        '"1st" and "2nd" refer to the order of the entries in "parameters"; '
+        "a parameter can name either an operation or a specific tool ID.\n"
+        + "\n".join(lines)
+    )
+
 
 def load_spec(use_case_id):
     spec_path = SPECS_DIR / f"{use_case_id.lower()}.json"
@@ -79,7 +103,9 @@ def build_prompt(use_case_id, variant="json"):
     term_labels = load_term_labels()
     requirement = format_requirement(spec, term_labels)
     if variant == "json":
-        constraints_text = json.dumps(spec["constraints"], indent=2)
+        constraints_text = (
+            json.dumps(spec["constraints"], indent=2)
+            + "\n\n" + constraint_definitions(spec["constraints"]))
     else:
         tools_by_id = {t["id"]: t for t in load_tools()}
         constraints_text = "\n".join(
