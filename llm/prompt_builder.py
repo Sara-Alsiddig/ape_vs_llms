@@ -9,7 +9,7 @@ TASK_FRAMING = """
 You are designing a computational workflow for a proteomics data-analysis task. You will be given:
 (1) a natural-language description of the scientific scenario,
 (2) the required input and output data types,
-(3) a set of constraints the workflow must satisfy,
+(3) a set of constraints and general workflow rules the workflow must satisfy,
 (4) a catalog of the exact tools available to you.
 
 Design a workflow — an ordered sequence of tool invocations connected by data flow — that solves
@@ -105,6 +105,17 @@ def format_requirement(spec, term_labels):
         "inputs": [format_slot(slot, term_labels) for slot in spec["inputs"]],
         "outputs": [format_slot(slot, term_labels) for slot in spec["outputs"]],
     }
+
+def workflow_rules(spec):
+    # Settings APE applies to every solution (ape/configs/noX_config.json:
+    # solution_length, use_workflow_input=all, use_all_generated_data=all),
+    # stated so the LLMs work under the same rules.
+    length = spec["solution_length"]
+    return (
+        f"- The workflow must have between {length['min']} and {length['max']} steps.\n"
+        "- Every required workflow input must be used by at least one step.\n"
+        "- Every output a step produces must be used, either as input to a later step or as the workflow's final output."
+    )
     
 def build_prompt(use_case_id, variant="json"):
     spec = load_spec(use_case_id)
@@ -125,6 +136,7 @@ def build_prompt(use_case_id, variant="json"):
         "## Scenario\n" + spec["nl_description"],
         "## Required Input/Output\n" + json.dumps(requirement, indent=2),
         "## Constraints\n" + constraints_text,
+        "## Workflow Rules\n" + workflow_rules(spec),
         "## Available Tools\n" + CATALOG_READING_NOTES + "\n" + catalog_text(),
         "## Output Format\n" + OUTPUT_SCHEMA_INSTRUCTIONS,
     ]
