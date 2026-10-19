@@ -1,0 +1,12 @@
+msconvert (RAW→mzML) → comet (pepXML) → peptideprophet (Target-Decoy, pepXML) → rt (pepXML → Amino acid property).
+
+Comet only needs one input slot, the mass spectrum, so no FASTA input is required. PeptideProphet covers both Peptide identification and Target-Decoy. rt accepts pepXML input.
+
+```json
+{"unsatisfiable": false, "steps": [
+{"id": "step1", "tool": "msconvert", "in": []},
+{"id": "step2", "tool": "comet", "in": ["step1"]},
+{"id": "step3", "tool": "peptideprophet", "in": ["step2"]},
+{"id": "step4", "tool": "rt", "in": ["step3"]}
+]}
+```
