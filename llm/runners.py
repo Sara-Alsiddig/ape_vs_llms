@@ -4,11 +4,11 @@ import time
 
 CLAUDE_MODEL = "claude-opus-5-5"
 CLAUDE_EFFORT = "medium"
-CLAUDE_MAX_TOKENS = 10000  
+CLAUDE_MAX_TOKENS = 20000  
 
 OPENAI_MODEL = "gpt-6-astra" 
 OPENAI_EFFORT = "medium"
-OPENAI_MAX_TOKENS = 10000  
+OPENAI_MAX_TOKENS = 20000  
 
 claude_client = anthropic.Anthropic()
 openai_client = openai.OpenAI()
