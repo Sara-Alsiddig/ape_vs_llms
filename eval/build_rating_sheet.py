@@ -49,15 +49,19 @@ def parse_llm_response(text):
 
 def load_llm(use_case):
     # Returns (workflows, skipped). workflows is a list of
-    # (source, model, tool_sequence); skipped lists the runs that answered
-    # UNSAT, since they have no workflow to rate.
+    # (source, model, tool_sequence); skipped lists (source, reason) for runs with no workflow
+    # to rate: UNSAT answers and answers that aren't valid JSON.
     workflows, skipped = [], []
     for p in sorted((RESULTS_DIR / use_case / "llm").glob("*/*/run*.txt")):
         variant, model = p.parent.parent.name, p.parent.name
         source = f"{variant}/{model}/{p.name}"
-        response = parse_llm_response(p.read_text())
+        try:
+            response = parse_llm_response(p.read_text())
+        except json.JSONDecodeError:
+            skipped.append((source, "invalid JSON (not rated)"))
+            continue
         if response["unsatisfiable"]:
-            skipped.append(source)
+            skipped.append((source, "unsatisfiable (not rated)"))
         else:
             sequence = graph_to_sequence(llm_json_to_graph(response))
             workflows.append((source, model, sequence))
@@ -92,8 +96,8 @@ def assign_ids(use_case, groups):
 
 def write_key(all_rows, all_skipped):
     # Private key: maps every source file to the sheet row it was rated
-    # under. Never sent to raters. Skipped (UNSAT) runs are listed with no
-    # row_id so every one of the files is accounted for.
+    # under. Never sent to raters. Skipped runs (UNSAT or invalid JSON) 
+    # are listed with no row_id.
     RATING_DIR.mkdir(parents=True, exist_ok=True)
     path = RATING_DIR / "rating_key.csv"
     with open(path, "w", newline="") as f:
@@ -104,9 +108,9 @@ def write_key(all_rows, all_skipped):
                 for system, source in sources:
                     writer.writerow([row_id, use_case, system, source, " -> ".join(seq)])
         for use_case, skipped in all_skipped.items():
-            for source in skipped:
+            for source, reason in skipped:
                 model = source.split("/")[1]
-                writer.writerow(["", use_case, model, source, "UNSAT (no workflow)"])
+                writer.writerow(["", use_case, model, source, reason])
     return path
 
 ANY_FORMAT = "format_1915"  # EDAM root: the spec accepts any format
@@ -122,6 +126,10 @@ def task_context(use_case):
     # prompt variant, so raters judge against exactly the same task.
     spec = load_spec(use_case)
     term_labels = load_term_labels()
+    # data_0945's current EDAM label is "Peptide identification"; Lamprecht
+    # et al. 2019 use its exact synonym "Protein identification". Show both so
+    # raters who know the paper recognise the term. Sheet only, prompts unchanged.
+    term_labels["data_0945"] = "Peptide/Protein identification"
     tools_by_id = {t["id"]: t for t in load_tools()}
     return {
         "scenario": spec["nl_description"],
