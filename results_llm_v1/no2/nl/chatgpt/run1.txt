@@ -1,4 +1,0 @@
-{
-  "unsatisfiable": true,
-  "steps": []
-}

@@ -101,20 +101,30 @@ def operation_obj(uri):
     obj["ancestors"] = [term_obj(a) for a in ancestors(URIRef(uri)) if a in operation_terms]
     return obj
 
+def typed_obj(uri, taxonomy_terms):
+    # Data and format terms also carry their subClassOf ancestry. APE treats
+    # a tool output annotated with a general type as producing any more
+    # specific type below it (e.g. ProteinProphet's "XML" output feeds
+    # PTMProphet's "pepXML" input), so the hierarchy is needed to see which
+    # slots connect -- the same raw edam.owl facts APE reads.
+    obj = term_obj(uri)
+    obj["ancestors"] = [term_obj(a) for a in ancestors(URIRef(uri)) if a in taxonomy_terms]
+    return obj
+
 tools = []
 for t in tool_annotations["functions"]:
     operations = [operation_obj(uri) for uri in t["taxonomyOperations"]]
     inputs = [
         {
-            "data": [term_obj(u) for u in slot["data_0006"]],
-            "format": [term_obj(u) for u in slot["format_1915"]],
+            "data": [typed_obj(u, data_terms) for u in slot["data_0006"]],
+            "format": [typed_obj(u, format_terms) for u in slot["format_1915"]],
         }
         for slot in t["inputs"]
     ]
     outputs = [
         {
-            "data": [term_obj(u) for u in slot["data_0006"]],
-            "format": [term_obj(u) for u in slot["format_1915"]],
+            "data": [typed_obj(u, data_terms) for u in slot["data_0006"]],
+            "format": [typed_obj(u, format_terms) for u in slot["format_1915"]],
         }
         for slot in t["outputs"]
     ]

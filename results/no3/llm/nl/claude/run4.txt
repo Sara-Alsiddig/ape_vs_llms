@@ -1,3 +1,4 @@
+```json
 {
 "unsatisfiable": false,
 "steps": [
@@ -7,3 +8,4 @@
     {"id": "step4", "tool": "ptmprophet", "in": ["step3"]}
 ]
 }
+```
