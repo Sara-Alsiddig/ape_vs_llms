@@ -1,0 +1,4867 @@
+
+You are designing a computational workflow for a proteomics data-analysis task. You will be given:
+(1) a natural-language description of the scientific scenario,
+(2) the required input and output data types,
+(3) a set of constraints and general workflow rules the workflow must satisfy,
+(4) a catalog of the exact tools available to you.
+
+Design a workflow — an ordered sequence of tool invocations connected by data flow — that solves
+the task using only the tools provided in the catalog below.
+
+
+## Scenario
+Next, our scientist faces the common task of protein identification and interpretation of lists of identified proteins by enrichment analysis, and again starts from MS spectra in the Thermo RAW format. After peptide database search and protein identification, the list of proteins identified via UniProt accessions should be analysed by gene-set enrichment analysis with respect to KEGG pathways and annotations, reporting KEGG pathway IDs and associated p- or q-values.
+
+## Required Input/Output
+{
+  "inputs": [
+    {
+      "data": [
+        {
+          "id": "data_0943",
+          "label": "Mass spectrum"
+        }
+      ],
+      "format": [
+        {
+          "id": "format_3712",
+          "label": "Thermo RAW"
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "data": [
+        {
+          "id": "data_2600",
+          "label": "Pathway or network"
+        }
+      ],
+      "format": [
+        {
+          "id": "format_1915",
+          "label": "Format"
+        }
+      ]
+    }
+  ]
+}
+
+## Constraints
+- The workflow must use a step for the operation "Peptide identification".
+- The workflow must use a step for the operation "Enrichment analysis".
+- If the operation "Enrichment analysis" is used, the operation "Peptide identification" must be used immediately before it, as the previous step in the workflow.
+- If the tool "ProteinProphet" is used, the tool "PeptideProphet" must be used immediately before it, as the previous step in the workflow.
+
+## Workflow Rules
+- The workflow must have between 1 and 10 steps.
+- Every required workflow input must be used by at least one step.
+- Every output a step produces must be used, either as input to a later step or as the workflow's final output.
+
+## Available Tools
+
+Each tool below is listed with the operation(s) it performs and its required input/output slots.
+A tool's "operations" list describes everything that tool is known to do — it performs all of
+them together as one step, not a menu to choose from. Within one input or output slot, multiple
+listed data/format options are alternatives — any one of them satisfies that slot, not all of
+them at once. A tool with multiple separate input slots requires all of those slots to be
+satisfied simultaneously (see rules on multi-input steps under Output Format below).
+
+Each operation also carries an "ancestors" list: the broader operation terms it is a more
+specific case of, taken from the EDAM ontology's subclass hierarchy. A tool that performs an
+operation also counts as performing every one of that operation's ancestors, so a constraint
+naming a broad operation is satisfied by any tool whose operation lists that term among its
+ancestors.
+
+Data and format terms in the input/output slots carry an "ancestors" list in the same way. A
+tool output annotated with a general type can be any more specific type below it, and an input
+slot accepts its listed type or any more specific one. So an output can feed an input when, for
+both data and format, the two terms are the same or one appears among the other's ancestors —
+e.g. an "XML" output can feed an input requiring "pepXML", because pepXML lists XML among its
+ancestors. The same applies to the required workflow input and output above: "Data" and "Format"
+are the roots of these hierarchies, so a required "Format" accepts any format.
+
+
+[
+  {
+    "id": "comet",
+    "label": "Comet",
+    "operations": [
+      {
+        "id": "operation_3646",
+        "label": "Peptide database search",
+        "ancestors": [
+          {
+            "id": "operation_2421",
+            "label": "Database search"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3244",
+            "label": "mzML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3654",
+            "label": "mzXML",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gprofile_r",
+    "label": "gProfileR",
+    "operations": [
+      {
+        "id": "operation_2422",
+        "label": "Data retrieval",
+        "ancestors": [
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_3908",
+            "label": "Information retrieval"
+          },
+          {
+            "id": "operation_0306",
+            "label": "Text mining"
+          },
+          {
+            "id": "operation_2423",
+            "label": "Prediction and recognition"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      },
+      {
+        "id": "operation_2497",
+        "label": "Pathway or network analysis",
+        "ancestors": []
+      },
+      {
+        "id": "operation_2436",
+        "label": "Gene-set enrichment analysis",
+        "ancestors": [
+          {
+            "id": "operation_2495",
+            "label": "Expression analysis"
+          },
+          {
+            "id": "operation_3501",
+            "label": "Enrichment analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3672",
+        "label": "Gene functional annotation",
+        "ancestors": [
+          {
+            "id": "operation_0361",
+            "label": "Sequence annotation"
+          },
+          {
+            "id": "operation_0226",
+            "label": "Annotation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_3021",
+            "label": "UniProt accession",
+            "ancestors": [
+              {
+                "id": "data_2091",
+                "label": "Accession"
+              },
+              {
+                "id": "data_1096",
+                "label": "Sequence accession (protein)"
+              },
+              {
+                "id": "data_1093",
+                "label": "Sequence accession"
+              },
+              {
+                "id": "data_1063",
+                "label": "Sequence identifier"
+              },
+              {
+                "id": "data_0976",
+                "label": "Identifier (by type of data)"
+              },
+              {
+                "id": "data_0842",
+                "label": "Identifier"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1964",
+            "label": "plain text format (unformatted)",
+            "ancestors": [
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2295",
+            "label": "Gene ID",
+            "ancestors": [
+              {
+                "id": "data_1893",
+                "label": "Locus ID"
+              },
+              {
+                "id": "data_1025",
+                "label": "Gene identifier"
+              },
+              {
+                "id": "data_0976",
+                "label": "Identifier (by type of data)"
+              },
+              {
+                "id": "data_0842",
+                "label": "Identifier"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1964",
+            "label": "plain text format (unformatted)",
+            "ancestors": [
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_2600",
+            "label": "Pathway or network",
+            "ancestors": [
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "idconvert",
+    "label": "idconvert",
+    "operations": [
+      {
+        "id": "operation_0335",
+        "label": "Formatting",
+        "ancestors": [
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_1812",
+        "label": "Parsing",
+        "ancestors": [
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3434",
+        "label": "Conversion",
+        "ancestors": [
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3747",
+            "label": "protXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "isobar",
+    "label": "isobar",
+    "operations": [
+      {
+        "id": "operation_3641",
+        "label": "TMT-tag",
+        "ancestors": [
+          {
+            "id": "operation_3635",
+            "label": "Labeled quantification"
+          },
+          {
+            "id": "operation_3630",
+            "label": "Protein quantification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_3755",
+        "label": "PTM localisation",
+        "ancestors": [
+          {
+            "id": "operation_3645",
+            "label": "PTM identification"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3630",
+        "label": "Protein quantification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_2238",
+        "label": "Statistical calculation",
+        "ancestors": [
+          {
+            "id": "operation_3438",
+            "label": "Calculation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3435",
+        "label": "Standardisation and normalisation",
+        "ancestors": [
+          {
+            "id": "operation_2238",
+            "label": "Statistical calculation"
+          },
+          {
+            "id": "operation_3438",
+            "label": "Calculation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3639",
+        "label": "iTRAQ",
+        "ancestors": [
+          {
+            "id": "operation_3635",
+            "label": "Labeled quantification"
+          },
+          {
+            "id": "operation_3630",
+            "label": "Protein quantification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_3635",
+        "label": "Labeled quantification",
+        "ancestors": [
+          {
+            "id": "operation_3630",
+            "label": "Protein quantification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0944",
+            "label": "Peptide mass fingerprint",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3651",
+            "label": "MGF",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3752",
+            "label": "CSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_2603",
+            "label": "Expression data",
+            "ancestors": [
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3468",
+            "label": "xls",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3507",
+                "label": "Document format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3508",
+            "label": "PDF",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3507",
+                "label": "Document format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "libra",
+    "label": "Libra",
+    "operations": [
+      {
+        "id": "operation_3641",
+        "label": "TMT-tag",
+        "ancestors": [
+          {
+            "id": "operation_3635",
+            "label": "Labeled quantification"
+          },
+          {
+            "id": "operation_3630",
+            "label": "Protein quantification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_3639",
+        "label": "iTRAQ",
+        "ancestors": [
+          {
+            "id": "operation_3635",
+            "label": "Labeled quantification"
+          },
+          {
+            "id": "operation_3630",
+            "label": "Protein quantification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_3630",
+        "label": "Protein quantification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_3635",
+        "label": "Labeled quantification",
+        "ancestors": [
+          {
+            "id": "operation_3630",
+            "label": "Protein quantification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_2603",
+            "label": "Expression data",
+            "ancestors": [
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3747",
+            "label": "protXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "msconvert",
+    "label": "msConvert",
+    "operations": [
+      {
+        "id": "operation_3695",
+        "label": "Filtering",
+        "ancestors": [
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_0335",
+        "label": "Formatting",
+        "ancestors": [
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2330",
+            "label": "Textual format",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3712",
+            "label": "Thermo RAW",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3654",
+            "label": "mzXML",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3244",
+            "label": "mzML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3651",
+            "label": "MGF",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2330",
+            "label": "Textual format",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3712",
+            "label": "Thermo RAW",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3654",
+            "label": "mzXML",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3244",
+            "label": "mzML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3651",
+            "label": "MGF",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mzxmlplot",
+    "label": "mzXMLplot",
+    "operations": [
+      {
+        "id": "operation_3694",
+        "label": "Mass spectrum visualisation",
+        "ancestors": [
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3203",
+        "label": "Chromatogram visualisation",
+        "ancestors": [
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_0531",
+        "label": "Heat map generation",
+        "ancestors": [
+          {
+            "id": "operation_3429",
+            "label": "Generation"
+          },
+          {
+            "id": "operation_0571",
+            "label": "Expression data visualisation"
+          },
+          {
+            "id": "operation_2495",
+            "label": "Expression analysis"
+          },
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3654",
+            "label": "mzXML",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_1636",
+            "label": "Heat map",
+            "ancestors": [
+              {
+                "id": "data_2968",
+                "label": "Image"
+              },
+              {
+                "id": "data_3768",
+                "label": "Clustered expression profiles"
+              },
+              {
+                "id": "data_2603",
+                "label": "Expression data"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3603",
+            "label": "PNG",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3547",
+                "label": "Image format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pep3d",
+    "label": "Pep3D",
+    "operations": [
+      {
+        "id": "operation_3694",
+        "label": "Mass spectrum visualisation",
+        "ancestors": [
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3203",
+        "label": "Chromatogram visualisation",
+        "ancestors": [
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3441",
+        "label": "Plotting",
+        "ancestors": []
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3654",
+            "label": "mzXML",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_2884",
+            "label": "Plot",
+            "ancestors": [
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3603",
+            "label": "PNG",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3547",
+                "label": "Image format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0942",
+            "label": "2D PAGE image",
+            "ancestors": [
+              {
+                "id": "data_3424",
+                "label": "Raw image"
+              },
+              {
+                "id": "data_2968",
+                "label": "Image"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3603",
+            "label": "PNG",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3547",
+                "label": "Image format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "peptideprophet",
+    "label": "PeptideProphet",
+    "operations": [
+      {
+        "id": "operation_3664",
+        "label": "Statistical modelling",
+        "ancestors": [
+          {
+            "id": "operation_2238",
+            "label": "Statistical calculation"
+          },
+          {
+            "id": "operation_3438",
+            "label": "Calculation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3675",
+        "label": "Variant filtering",
+        "ancestors": [
+          {
+            "id": "operation_3218",
+            "label": "Sequencing quality control"
+          },
+          {
+            "id": "operation_2478",
+            "label": "Nucleic acid sequence analysis"
+          },
+          {
+            "id": "operation_2428",
+            "label": "Validation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2403",
+            "label": "Sequence analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_3631",
+        "label": "Peptide identification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3649",
+        "label": "Target-Decoy",
+        "ancestors": [
+          {
+            "id": "operation_2428",
+            "label": "Validation"
+          },
+          {
+            "id": "operation_3646",
+            "label": "Peptide database search"
+          },
+          {
+            "id": "operation_2421",
+            "label": "Database search"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_2331",
+            "label": "HTML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_2331",
+            "label": "HTML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "peptideshaker",
+    "label": "PeptideShaker",
+    "operations": [
+      {
+        "id": "operation_3755",
+        "label": "PTM localisation",
+        "ancestors": [
+          {
+            "id": "operation_3645",
+            "label": "PTM identification"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3767",
+        "label": "Protein identification",
+        "ancestors": [
+          {
+            "id": "operation_2423",
+            "label": "Prediction and recognition"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_0570",
+        "label": "Structure visualisation",
+        "ancestors": [
+          {
+            "id": "operation_2480",
+            "label": "Structure analysis"
+          },
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      },
+      {
+        "id": "operation_2428",
+        "label": "Validation",
+        "ancestors": [
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3631",
+        "label": "Peptide identification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3694",
+        "label": "Mass spectrum visualisation",
+        "ancestors": [
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3501",
+        "label": "Enrichment analysis",
+        "ancestors": [
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_2976",
+            "label": "Protein sequence",
+            "ancestors": [
+              {
+                "id": "data_2044",
+                "label": "Sequence"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1929",
+            "label": "FASTA",
+            "ancestors": [
+              {
+                "id": "format_2200",
+                "label": "FASTA-like (text)"
+              },
+              {
+                "id": "format_2554",
+                "label": "Alignment format (text)"
+              },
+              {
+                "id": "format_1921",
+                "label": "Alignment format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_2546",
+                "label": "FASTA-like"
+              },
+              {
+                "id": "format_1919",
+                "label": "Sequence record format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2536",
+            "label": "Mass spectrometry data",
+            "ancestors": [
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3651",
+            "label": "MGF",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_2992",
+            "label": "Protein structure image",
+            "ancestors": [
+              {
+                "id": "data_3153",
+                "label": "Protein image"
+              },
+              {
+                "id": "data_1710",
+                "label": "Structure image"
+              },
+              {
+                "id": "data_2968",
+                "label": "Image"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3579",
+            "label": "JPG",
+            "ancestors": [
+              {
+                "id": "format_2333",
+                "label": "Binary format"
+              },
+              {
+                "id": "format_3547",
+                "label": "Image format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3604",
+            "label": "SVG",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3547",
+                "label": "Image format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_3754",
+            "label": "GO-term enrichment data",
+            "ancestors": [
+              {
+                "id": "data_3753",
+                "label": "Over-representation data"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2330",
+            "label": "Textual format",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2969",
+            "label": "Sequence image",
+            "ancestors": [
+              {
+                "id": "data_2955",
+                "label": "Sequence report"
+              },
+              {
+                "id": "data_2968",
+                "label": "Image"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              },
+              {
+                "id": "data_2048",
+                "label": "Report"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3547",
+            "label": "Image format",
+            "ancestors": [
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0896",
+            "label": "Protein report",
+            "ancestors": [
+              {
+                "id": "data_2048",
+                "label": "Report"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "proteinprophet",
+    "label": "ProteinProphet",
+    "operations": [
+      {
+        "id": "operation_3664",
+        "label": "Statistical modelling",
+        "ancestors": [
+          {
+            "id": "operation_2238",
+            "label": "Statistical calculation"
+          },
+          {
+            "id": "operation_3438",
+            "label": "Calculation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3767",
+        "label": "Protein identification",
+        "ancestors": [
+          {
+            "id": "operation_2423",
+            "label": "Prediction and recognition"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3648",
+        "label": "Validation of peptide-spectrum matches",
+        "ancestors": []
+      },
+      {
+        "id": "operation_3644",
+        "label": "de Novo sequencing",
+        "ancestors": [
+          {
+            "id": "operation_0230",
+            "label": "Sequence generation"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2403",
+            "label": "Sequence analysis"
+          },
+          {
+            "id": "operation_3429",
+            "label": "Generation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3695",
+        "label": "Filtering",
+        "ancestors": [
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_2331",
+            "label": "HTML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2332",
+            "label": "XML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3747",
+            "label": "protXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_2331",
+            "label": "HTML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3468",
+            "label": "xls",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3507",
+                "label": "Document format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "protk",
+    "label": "protk",
+    "operations": [
+      {
+        "id": "operation_2409",
+        "label": "Data handling",
+        "ancestors": [
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3631",
+        "label": "Peptide identification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3630",
+        "label": "Protein quantification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_3799",
+            "label": "Quantification"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_1233",
+            "label": "Sequence set (protein)",
+            "ancestors": [
+              {
+                "id": "data_0850",
+                "label": "Sequence set"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1929",
+            "label": "FASTA",
+            "ancestors": [
+              {
+                "id": "format_2200",
+                "label": "FASTA-like (text)"
+              },
+              {
+                "id": "format_2554",
+                "label": "Alignment format (text)"
+              },
+              {
+                "id": "format_1921",
+                "label": "Alignment format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_2546",
+                "label": "FASTA-like"
+              },
+              {
+                "id": "format_1919",
+                "label": "Sequence record format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2603",
+            "label": "Expression data",
+            "ancestors": [
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ptmprophet",
+    "label": "PTMProphet",
+    "operations": [
+      {
+        "id": "operation_3755",
+        "label": "PTM localisation",
+        "ancestors": [
+          {
+            "id": "operation_3645",
+            "label": "PTM identification"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ssrcalc",
+    "label": "SSRCalc",
+    "operations": [
+      {
+        "id": "operation_3633",
+        "label": "Retention time prediction",
+        "ancestors": [
+          {
+            "id": "operation_3438",
+            "label": "Calculation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_2974",
+            "label": "Protein sequence (raw)",
+            "ancestors": []
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2330",
+            "label": "Textual format",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2976",
+            "label": "Protein sequence",
+            "ancestors": [
+              {
+                "id": "data_2044",
+                "label": "Sequence"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2330",
+            "label": "Textual format",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_1520",
+            "label": "Peptide hydrophobic moment",
+            "ancestors": [
+              {
+                "id": "data_2970",
+                "label": "Protein hydropathy data"
+              },
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2331",
+            "label": "HTML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3468",
+            "label": "xls",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3507",
+                "label": "Document format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2016",
+            "label": "Amino acid property",
+            "ancestors": [
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2331",
+            "label": "HTML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3468",
+            "label": "xls",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3507",
+                "label": "Document format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "searchgui",
+    "label": "SearchGUI",
+    "operations": [
+      {
+        "id": "operation_3767",
+        "label": "Protein identification",
+        "ancestors": [
+          {
+            "id": "operation_2423",
+            "label": "Prediction and recognition"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3694",
+        "label": "Mass spectrum visualisation",
+        "ancestors": [
+          {
+            "id": "operation_0337",
+            "label": "Visualisation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3647",
+        "label": "Blind peptide database search",
+        "ancestors": [
+          {
+            "id": "operation_3646",
+            "label": "Peptide database search"
+          },
+          {
+            "id": "operation_2421",
+            "label": "Database search"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      },
+      {
+        "id": "operation_3631",
+        "label": "Peptide identification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3646",
+        "label": "Peptide database search",
+        "ancestors": [
+          {
+            "id": "operation_2421",
+            "label": "Database search"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      },
+      {
+        "id": "operation_3648",
+        "label": "Validation of peptide-spectrum matches",
+        "ancestors": []
+      },
+      {
+        "id": "operation_3644",
+        "label": "de Novo sequencing",
+        "ancestors": [
+          {
+            "id": "operation_0230",
+            "label": "Sequence generation"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_2403",
+            "label": "Sequence analysis"
+          },
+          {
+            "id": "operation_3429",
+            "label": "Generation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3651",
+            "label": "MGF",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3653",
+            "label": "pkl",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3652",
+            "label": "dta",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_2976",
+            "label": "Protein sequence",
+            "ancestors": [
+              {
+                "id": "data_2044",
+                "label": "Sequence"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1929",
+            "label": "FASTA",
+            "ancestors": [
+              {
+                "id": "format_2200",
+                "label": "FASTA-like (text)"
+              },
+              {
+                "id": "format_2554",
+                "label": "Alignment format (text)"
+              },
+              {
+                "id": "format_1921",
+                "label": "Alignment format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_2546",
+                "label": "FASTA-like"
+              },
+              {
+                "id": "format_1919",
+                "label": "Sequence record format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3711",
+            "label": "X!Tandem XML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tandem2xml",
+    "label": "Tandem2XML",
+    "operations": [
+      {
+        "id": "operation_3267",
+        "label": "Sequence coordinate conversion",
+        "ancestors": [
+          {
+            "id": "operation_3434",
+            "label": "Conversion"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3711",
+            "label": "X!Tandem XML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rt",
+    "label": "rt",
+    "operations": [
+      {
+        "id": "operation_3633",
+        "label": "Retention time prediction",
+        "ancestors": [
+          {
+            "id": "operation_3438",
+            "label": "Calculation"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3751",
+            "label": "DSV",
+            "ancestors": [
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_2016",
+            "label": "Amino acid property",
+            "ancestors": [
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_2332",
+            "label": "XML",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_2330",
+            "label": "Textual format",
+            "ancestors": [
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xml2tsv",
+    "label": "xml2tsv",
+    "operations": [
+      {
+        "id": "operation_3434",
+        "label": "Conversion",
+        "ancestors": [
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3655",
+            "label": "pepXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3475",
+            "label": "TSV",
+            "ancestors": [
+              {
+                "id": "format_3751",
+                "label": "DSV"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xtandem",
+    "label": "XTandem",
+    "operations": [
+      {
+        "id": "operation_3647",
+        "label": "Blind peptide database search",
+        "ancestors": [
+          {
+            "id": "operation_3646",
+            "label": "Peptide database search"
+          },
+          {
+            "id": "operation_2421",
+            "label": "Database search"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      },
+      {
+        "id": "operation_3645",
+        "label": "PTM identification",
+        "ancestors": [
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3631",
+        "label": "Peptide identification",
+        "ancestors": [
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      },
+      {
+        "id": "operation_3646",
+        "label": "Peptide database search",
+        "ancestors": [
+          {
+            "id": "operation_2421",
+            "label": "Database search"
+          },
+          {
+            "id": "operation_3631",
+            "label": "Peptide identification"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          },
+          {
+            "id": "operation_0224",
+            "label": "Query and retrieval"
+          },
+          {
+            "id": "operation_2409",
+            "label": "Data handling"
+          }
+        ]
+      },
+      {
+        "id": "operation_3767",
+        "label": "Protein identification",
+        "ancestors": [
+          {
+            "id": "operation_2423",
+            "label": "Prediction and recognition"
+          },
+          {
+            "id": "operation_3214",
+            "label": "Spectral analysis"
+          },
+          {
+            "id": "operation_2945",
+            "label": "Analysis"
+          },
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0943",
+            "label": "Mass spectrum",
+            "ancestors": [
+              {
+                "id": "data_2536",
+                "label": "Mass spectrometry data"
+              },
+              {
+                "id": "data_3108",
+                "label": "Experimental measurement"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3652",
+            "label": "dta",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3653",
+            "label": "pkl",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3654",
+            "label": "mzXML",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3834",
+            "label": "mzData",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3651",
+            "label": "MGF",
+            "ancestors": [
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3711",
+            "label": "X!Tandem XML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3244",
+            "label": "mzML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "data": [
+          {
+            "id": "data_0850",
+            "label": "Sequence set",
+            "ancestors": [
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1929",
+            "label": "FASTA",
+            "ancestors": [
+              {
+                "id": "format_2200",
+                "label": "FASTA-like (text)"
+              },
+              {
+                "id": "format_2554",
+                "label": "Alignment format (text)"
+              },
+              {
+                "id": "format_1921",
+                "label": "Alignment format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              },
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_2546",
+                "label": "FASTA-like"
+              },
+              {
+                "id": "format_1919",
+                "label": "Sequence record format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3711",
+            "label": "X!Tandem XML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          },
+          {
+            "id": "format_3247",
+            "label": "mzIdentML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "extract_protein_names",
+    "label": "extract_protein_names",
+    "operations": [
+      {
+        "id": "operation_3434",
+        "label": "Conversion",
+        "ancestors": [
+          {
+            "id": "operation_0004",
+            "label": "Operation"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "data": [
+          {
+            "id": "data_0945",
+            "label": "Peptide identification",
+            "ancestors": [
+              {
+                "id": "data_0897",
+                "label": "Protein property"
+              },
+              {
+                "id": "data_2979",
+                "label": "Peptide property"
+              },
+              {
+                "id": "data_2087",
+                "label": "Molecular property"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_3747",
+            "label": "protXML",
+            "ancestors": [
+              {
+                "id": "format_2332",
+                "label": "XML"
+              },
+              {
+                "id": "format_3245",
+                "label": "Mass spectrometry data format"
+              },
+              {
+                "id": "format_2350",
+                "label": "Format (by type of data)"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "data": [
+          {
+            "id": "data_3021",
+            "label": "UniProt accession",
+            "ancestors": [
+              {
+                "id": "data_2091",
+                "label": "Accession"
+              },
+              {
+                "id": "data_1096",
+                "label": "Sequence accession (protein)"
+              },
+              {
+                "id": "data_1093",
+                "label": "Sequence accession"
+              },
+              {
+                "id": "data_1063",
+                "label": "Sequence identifier"
+              },
+              {
+                "id": "data_0976",
+                "label": "Identifier (by type of data)"
+              },
+              {
+                "id": "data_0842",
+                "label": "Identifier"
+              },
+              {
+                "id": "data_0006",
+                "label": "Data"
+              }
+            ]
+          }
+        ],
+        "format": [
+          {
+            "id": "format_1964",
+            "label": "plain text format (unformatted)",
+            "ancestors": [
+              {
+                "id": "format_2330",
+                "label": "Textual format"
+              },
+              {
+                "id": "format_1915",
+                "label": "Format"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+
+## Output Format
+
+Respond with a JSON object describing your workflow, using exactly this schema:
+
+{  
+"unsatisfiable": false,
+"steps": [
+    {"id": "step1", "tool": "<tool id>", "in": []},
+    {"id": "step2", "tool": "<tool id>", "in": []},
+    {"id": "step3", "tool": "<tool id>", "in": ["step1", "step2"]}
+]
+}
+
+Rules:
+- Each step must have a unique "id".
+- "tool" must be one of the exact tool IDs listed in the catalog above (e.g. "comet", "msconvert") — do not invent tool IDs or substitute a tool's label for its id.
+- "in" lists the ids of steps whose output feeds into this step. A step that consumes the workflow's initial input (nothing upstream) has an empty "in" list. A step can list more than one id in "in" when the tool it uses requires multiple inputs at once (e.g. step3 above, using a tool that needs both step1's and step2's outputs) — list every upstream step it depends on, not just one.
+- If, after checking the catalog and constraints carefully, no valid workflow exists using only the tools listed, set "unsatisfiable" to true and "steps" to an empty list. 
+- If a valid workflow exists, set "unsatisfiable" to false.
+- Respond with only the JSON object — no extra commentary.

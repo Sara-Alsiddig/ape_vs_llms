@@ -1,4 +1,1 @@
-{
-  "unsatisfiable": true,
-  "steps": []
-}
+{"unsatisfiable":true,"steps":[]}

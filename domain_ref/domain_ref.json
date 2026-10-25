@@ -66,17 +66,63 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3244",
-              "label": "mzML"
+              "label": "mzML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3654",
-              "label": "mzXML"
+              "label": "mzXML",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -86,13 +132,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -187,13 +269,53 @@
           "data": [
             {
               "id": "data_3021",
-              "label": "UniProt accession"
+              "label": "UniProt accession",
+              "ancestors": [
+                {
+                  "id": "data_2091",
+                  "label": "Accession"
+                },
+                {
+                  "id": "data_1096",
+                  "label": "Sequence accession (protein)"
+                },
+                {
+                  "id": "data_1093",
+                  "label": "Sequence accession"
+                },
+                {
+                  "id": "data_1063",
+                  "label": "Sequence identifier"
+                },
+                {
+                  "id": "data_0976",
+                  "label": "Identifier (by type of data)"
+                },
+                {
+                  "id": "data_0842",
+                  "label": "Identifier"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1964",
-              "label": "plain text format (unformatted)"
+              "label": "plain text format (unformatted)",
+              "ancestors": [
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -201,13 +323,45 @@
           "data": [
             {
               "id": "data_2295",
-              "label": "Gene ID"
+              "label": "Gene ID",
+              "ancestors": [
+                {
+                  "id": "data_1893",
+                  "label": "Locus ID"
+                },
+                {
+                  "id": "data_1025",
+                  "label": "Gene identifier"
+                },
+                {
+                  "id": "data_0976",
+                  "label": "Identifier (by type of data)"
+                },
+                {
+                  "id": "data_0842",
+                  "label": "Identifier"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1964",
-              "label": "plain text format (unformatted)"
+              "label": "plain text format (unformatted)",
+              "ancestors": [
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -217,13 +371,33 @@
           "data": [
             {
               "id": "data_2600",
-              "label": "Pathway or network"
+              "label": "Pathway or network",
+              "ancestors": [
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -277,21 +451,93 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3747",
-              "label": "protXML"
+              "label": "protXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -301,17 +547,71 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -493,13 +793,49 @@
           "data": [
             {
               "id": "data_0944",
-              "label": "Peptide mass fingerprint"
+              "label": "Peptide mass fingerprint",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3651",
-              "label": "MGF"
+              "label": "MGF",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -507,13 +843,45 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3752",
-              "label": "CSV"
+              "label": "CSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -523,17 +891,59 @@
           "data": [
             {
               "id": "data_2603",
-              "label": "Expression data"
+              "label": "Expression data",
+              "ancestors": [
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3468",
-              "label": "xls"
+              "label": "xls",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3507",
+                  "label": "Document format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3508",
-              "label": "PDF"
+              "label": "PDF",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3507",
+                  "label": "Document format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -657,13 +1067,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -673,17 +1119,59 @@
           "data": [
             {
               "id": "data_2603",
-              "label": "Expression data"
+              "label": "Expression data",
+              "ancestors": [
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3747",
-              "label": "protXML"
+              "label": "protXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -727,33 +1215,135 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2330",
-              "label": "Textual format"
+              "label": "Textual format",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3712",
-              "label": "Thermo RAW"
+              "label": "Thermo RAW",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3654",
-              "label": "mzXML"
+              "label": "mzXML",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3244",
-              "label": "mzML"
+              "label": "mzML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3651",
-              "label": "MGF"
+              "label": "MGF",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -763,33 +1353,135 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2330",
-              "label": "Textual format"
+              "label": "Textual format",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3712",
-              "label": "Thermo RAW"
+              "label": "Thermo RAW",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3654",
-              "label": "mzXML"
+              "label": "mzXML",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3244",
-              "label": "mzML"
+              "label": "mzML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3651",
-              "label": "MGF"
+              "label": "MGF",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -863,13 +1555,41 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3654",
-              "label": "mzXML"
+              "label": "mzXML",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -879,13 +1599,49 @@
           "data": [
             {
               "id": "data_1636",
-              "label": "Heat map"
+              "label": "Heat map",
+              "ancestors": [
+                {
+                  "id": "data_2968",
+                  "label": "Image"
+                },
+                {
+                  "id": "data_3768",
+                  "label": "Clustered expression profiles"
+                },
+                {
+                  "id": "data_2603",
+                  "label": "Expression data"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3603",
-              "label": "PNG"
+              "label": "PNG",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3547",
+                  "label": "Image format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -934,13 +1690,41 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3654",
-              "label": "mzXML"
+              "label": "mzXML",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -948,13 +1732,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -964,13 +1784,37 @@
           "data": [
             {
               "id": "data_2884",
-              "label": "Plot"
+              "label": "Plot",
+              "ancestors": [
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3603",
-              "label": "PNG"
+              "label": "PNG",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3547",
+                  "label": "Image format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -978,13 +1822,45 @@
           "data": [
             {
               "id": "data_0942",
-              "label": "2D PAGE image"
+              "label": "2D PAGE image",
+              "ancestors": [
+                {
+                  "id": "data_3424",
+                  "label": "Raw image"
+                },
+                {
+                  "id": "data_2968",
+                  "label": "Image"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3603",
-              "label": "PNG"
+              "label": "PNG",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3547",
+                  "label": "Image format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1108,17 +1984,59 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_2331",
-              "label": "HTML"
+              "label": "HTML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1128,17 +2046,59 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_2331",
-              "label": "HTML"
+              "label": "HTML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1280,13 +2240,57 @@
           "data": [
             {
               "id": "data_2976",
-              "label": "Protein sequence"
+              "label": "Protein sequence",
+              "ancestors": [
+                {
+                  "id": "data_2044",
+                  "label": "Sequence"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1929",
-              "label": "FASTA"
+              "label": "FASTA",
+              "ancestors": [
+                {
+                  "id": "format_2200",
+                  "label": "FASTA-like (text)"
+                },
+                {
+                  "id": "format_2554",
+                  "label": "Alignment format (text)"
+                },
+                {
+                  "id": "format_1921",
+                  "label": "Alignment format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_2546",
+                  "label": "FASTA-like"
+                },
+                {
+                  "id": "format_1919",
+                  "label": "Sequence record format"
+                }
+              ]
             }
           ]
         },
@@ -1294,13 +2298,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1308,13 +2348,37 @@
           "data": [
             {
               "id": "data_2536",
-              "label": "Mass spectrometry data"
+              "label": "Mass spectrometry data",
+              "ancestors": [
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3651",
-              "label": "MGF"
+              "label": "MGF",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1324,17 +2388,71 @@
           "data": [
             {
               "id": "data_2992",
-              "label": "Protein structure image"
+              "label": "Protein structure image",
+              "ancestors": [
+                {
+                  "id": "data_3153",
+                  "label": "Protein image"
+                },
+                {
+                  "id": "data_1710",
+                  "label": "Structure image"
+                },
+                {
+                  "id": "data_2968",
+                  "label": "Image"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3579",
-              "label": "JPG"
+              "label": "JPG",
+              "ancestors": [
+                {
+                  "id": "format_2333",
+                  "label": "Binary format"
+                },
+                {
+                  "id": "format_3547",
+                  "label": "Image format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3604",
-              "label": "SVG"
+              "label": "SVG",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3547",
+                  "label": "Image format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1342,13 +2460,29 @@
           "data": [
             {
               "id": "data_3754",
-              "label": "GO-term enrichment data"
+              "label": "GO-term enrichment data",
+              "ancestors": [
+                {
+                  "id": "data_3753",
+                  "label": "Over-representation data"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2330",
-              "label": "Textual format"
+              "label": "Textual format",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1356,13 +2490,41 @@
           "data": [
             {
               "id": "data_2969",
-              "label": "Sequence image"
+              "label": "Sequence image",
+              "ancestors": [
+                {
+                  "id": "data_2955",
+                  "label": "Sequence report"
+                },
+                {
+                  "id": "data_2968",
+                  "label": "Image"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                },
+                {
+                  "id": "data_2048",
+                  "label": "Report"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3547",
-              "label": "Image format"
+              "label": "Image format",
+              "ancestors": [
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1370,13 +2532,37 @@
           "data": [
             {
               "id": "data_0896",
-              "label": "Protein report"
+              "label": "Protein report",
+              "ancestors": [
+                {
+                  "id": "data_2048",
+                  "label": "Report"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1485,17 +2671,59 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_2331",
-              "label": "HTML"
+              "label": "HTML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1505,25 +2733,91 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2332",
-              "label": "XML"
+              "label": "XML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3747",
-              "label": "protXML"
+              "label": "protXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_2331",
-              "label": "HTML"
+              "label": "HTML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3468",
-              "label": "xls"
+              "label": "xls",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3507",
+                  "label": "Document format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1589,13 +2883,57 @@
           "data": [
             {
               "id": "data_1233",
-              "label": "Sequence set (protein)"
+              "label": "Sequence set (protein)",
+              "ancestors": [
+                {
+                  "id": "data_0850",
+                  "label": "Sequence set"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1929",
-              "label": "FASTA"
+              "label": "FASTA",
+              "ancestors": [
+                {
+                  "id": "format_2200",
+                  "label": "FASTA-like (text)"
+                },
+                {
+                  "id": "format_2554",
+                  "label": "Alignment format (text)"
+                },
+                {
+                  "id": "format_1921",
+                  "label": "Alignment format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_2546",
+                  "label": "FASTA-like"
+                },
+                {
+                  "id": "format_1919",
+                  "label": "Sequence record format"
+                }
+              ]
             }
           ]
         },
@@ -1603,13 +2941,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1619,21 +2993,89 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1641,13 +3083,33 @@
           "data": [
             {
               "id": "data_2603",
-              "label": "Expression data"
+              "label": "Expression data",
+              "ancestors": [
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1689,13 +3151,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1705,13 +3203,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1741,13 +3275,20 @@
           "data": [
             {
               "id": "data_2974",
-              "label": "Protein sequence (raw)"
+              "label": "Protein sequence (raw)",
+              "ancestors": []
             }
           ],
           "format": [
             {
               "id": "format_2330",
-              "label": "Textual format"
+              "label": "Textual format",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1755,13 +3296,29 @@
           "data": [
             {
               "id": "data_2976",
-              "label": "Protein sequence"
+              "label": "Protein sequence",
+              "ancestors": [
+                {
+                  "id": "data_2044",
+                  "label": "Sequence"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2330",
-              "label": "Textual format"
+              "label": "Textual format",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1771,17 +3328,59 @@
           "data": [
             {
               "id": "data_1520",
-              "label": "Peptide hydrophobic moment"
+              "label": "Peptide hydrophobic moment",
+              "ancestors": [
+                {
+                  "id": "data_2970",
+                  "label": "Protein hydropathy data"
+                },
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2331",
-              "label": "HTML"
+              "label": "HTML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3468",
-              "label": "xls"
+              "label": "xls",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3507",
+                  "label": "Document format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -1789,17 +3388,51 @@
           "data": [
             {
               "id": "data_2016",
-              "label": "Amino acid property"
+              "label": "Amino acid property",
+              "ancestors": [
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2331",
-              "label": "HTML"
+              "label": "HTML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3468",
-              "label": "xls"
+              "label": "xls",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3507",
+                  "label": "Document format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -1980,21 +3613,77 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3651",
-              "label": "MGF"
+              "label": "MGF",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3653",
-              "label": "pkl"
+              "label": "pkl",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3652",
-              "label": "dta"
+              "label": "dta",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -2002,13 +3691,57 @@
           "data": [
             {
               "id": "data_2976",
-              "label": "Protein sequence"
+              "label": "Protein sequence",
+              "ancestors": [
+                {
+                  "id": "data_2044",
+                  "label": "Sequence"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1929",
-              "label": "FASTA"
+              "label": "FASTA",
+              "ancestors": [
+                {
+                  "id": "format_2200",
+                  "label": "FASTA-like (text)"
+                },
+                {
+                  "id": "format_2554",
+                  "label": "Alignment format (text)"
+                },
+                {
+                  "id": "format_1921",
+                  "label": "Alignment format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_2546",
+                  "label": "FASTA-like"
+                },
+                {
+                  "id": "format_1919",
+                  "label": "Sequence record format"
+                }
+              ]
             }
           ]
         }
@@ -2018,13 +3751,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3711",
-              "label": "X!Tandem XML"
+              "label": "X!Tandem XML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2054,13 +3823,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3711",
-              "label": "X!Tandem XML"
+              "label": "X!Tandem XML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2070,13 +3875,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2106,21 +3947,81 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3751",
-              "label": "DSV"
+              "label": "DSV",
+              "ancestors": [
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2130,21 +4031,57 @@
           "data": [
             {
               "id": "data_2016",
-              "label": "Amino acid property"
+              "label": "Amino acid property",
+              "ancestors": [
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_2332",
-              "label": "XML"
+              "label": "XML",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_2330",
-              "label": "Textual format"
+              "label": "Textual format",
+              "ancestors": [
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2170,17 +4107,71 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3655",
-              "label": "pepXML"
+              "label": "pepXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2190,13 +4181,45 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3475",
-              "label": "TSV"
+              "label": "TSV",
+              "ancestors": [
+                {
+                  "id": "format_3751",
+                  "label": "DSV"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2346,37 +4369,161 @@
           "data": [
             {
               "id": "data_0943",
-              "label": "Mass spectrum"
+              "label": "Mass spectrum",
+              "ancestors": [
+                {
+                  "id": "data_2536",
+                  "label": "Mass spectrometry data"
+                },
+                {
+                  "id": "data_3108",
+                  "label": "Experimental measurement"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3652",
-              "label": "dta"
+              "label": "dta",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3653",
-              "label": "pkl"
+              "label": "pkl",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3654",
-              "label": "mzXML"
+              "label": "mzXML",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3834",
-              "label": "mzData"
+              "label": "mzData",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3651",
-              "label": "MGF"
+              "label": "MGF",
+              "ancestors": [
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3711",
-              "label": "X!Tandem XML"
+              "label": "X!Tandem XML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3244",
-              "label": "mzML"
+              "label": "mzML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         },
@@ -2384,13 +4531,53 @@
           "data": [
             {
               "id": "data_0850",
-              "label": "Sequence set"
+              "label": "Sequence set",
+              "ancestors": [
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1929",
-              "label": "FASTA"
+              "label": "FASTA",
+              "ancestors": [
+                {
+                  "id": "format_2200",
+                  "label": "FASTA-like (text)"
+                },
+                {
+                  "id": "format_2554",
+                  "label": "Alignment format (text)"
+                },
+                {
+                  "id": "format_1921",
+                  "label": "Alignment format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                },
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_2546",
+                  "label": "FASTA-like"
+                },
+                {
+                  "id": "format_1919",
+                  "label": "Sequence record format"
+                }
+              ]
             }
           ]
         }
@@ -2400,17 +4587,71 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3711",
-              "label": "X!Tandem XML"
+              "label": "X!Tandem XML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             },
             {
               "id": "format_3247",
-              "label": "mzIdentML"
+              "label": "mzIdentML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2436,13 +4677,49 @@
           "data": [
             {
               "id": "data_0945",
-              "label": "Peptide identification"
+              "label": "Peptide identification",
+              "ancestors": [
+                {
+                  "id": "data_0897",
+                  "label": "Protein property"
+                },
+                {
+                  "id": "data_2979",
+                  "label": "Peptide property"
+                },
+                {
+                  "id": "data_2087",
+                  "label": "Molecular property"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_3747",
-              "label": "protXML"
+              "label": "protXML",
+              "ancestors": [
+                {
+                  "id": "format_2332",
+                  "label": "XML"
+                },
+                {
+                  "id": "format_3245",
+                  "label": "Mass spectrometry data format"
+                },
+                {
+                  "id": "format_2350",
+                  "label": "Format (by type of data)"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
@@ -2452,13 +4729,53 @@
           "data": [
             {
               "id": "data_3021",
-              "label": "UniProt accession"
+              "label": "UniProt accession",
+              "ancestors": [
+                {
+                  "id": "data_2091",
+                  "label": "Accession"
+                },
+                {
+                  "id": "data_1096",
+                  "label": "Sequence accession (protein)"
+                },
+                {
+                  "id": "data_1093",
+                  "label": "Sequence accession"
+                },
+                {
+                  "id": "data_1063",
+                  "label": "Sequence identifier"
+                },
+                {
+                  "id": "data_0976",
+                  "label": "Identifier (by type of data)"
+                },
+                {
+                  "id": "data_0842",
+                  "label": "Identifier"
+                },
+                {
+                  "id": "data_0006",
+                  "label": "Data"
+                }
+              ]
             }
           ],
           "format": [
             {
               "id": "format_1964",
-              "label": "plain text format (unformatted)"
+              "label": "plain text format (unformatted)",
+              "ancestors": [
+                {
+                  "id": "format_2330",
+                  "label": "Textual format"
+                },
+                {
+                  "id": "format_1915",
+                  "label": "Format"
+                }
+              ]
             }
           ]
         }
