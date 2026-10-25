@@ -103,6 +103,17 @@ def type_chain(response, use_case, tools_by_id, ancestors):
             return False
     return True
 
+def claims_unsat(response):
+    # The LLM's own verdict; None when the answer didn't parse.
+    if response is None:
+        return None
+    return response["unsatisfiable"]
+
+def ape_unsat(use_case):
+    # APE writes CWL candidates only when it finds solutions, so no CWL
+    # folder means APE certified the spec UNSAT (No2 in our use cases).
+    return not (RESULTS_DIR / use_case / "CWL").exists()
+
 if __name__ == "__main__":
     runs = load_runs()
     print(f"{len(runs)} runs")
@@ -131,3 +142,13 @@ if __name__ == "__main__":
     for use_case in USE_CASES:
         counts = Counter(r["type_chain"] for r in runs if r["use_case"] == use_case)
         print(f"type_chain {use_case}: {dict(counts)}")
+    for r in runs:
+        r["claims_unsat"] = claims_unsat(r["response"])
+    verdicts = Counter(
+        (r["system"], r["variant"],
+        "APE UNSAT" if ape_unsat(r["use_case"]) else "APE SAT",
+        {True: "LLM UNSAT", False: "LLM workflow", None: "invalid"}[r["claims_unsat"]])
+        for r in runs)
+    print("UNSAT behaviour:")
+    for key in sorted(verdicts):
+        print(f"  {key}: {verdicts[key]}")
