@@ -44,12 +44,17 @@ def grounded(response, tool_ids):
 
 def ape_match(response, use_case):
     # True if the workflow is isomorphic to one of APE's 25 candidates.
-    # None for UNSAT or unparsed answers -- whether an UNSAT verdict agrees
-    # with APE's is a separate column (step 6).
+    # None for UNSAT or unparsed answers - (whether an UNSAT verdict agrees
+    # with APE's is a separate column step 6)).
     if response is None or response["unsatisfiable"]:
         return None
     return check_llm_against_ape(response, RESULTS_DIR / use_case / "CWL")["matched"]
 
+def n_steps(response):
+    # Number of tools in the workflow; None when there is no workflow.
+    if response is None or response["unsatisfiable"]:
+        return None
+    return len(response["steps"])
 
 if __name__ == "__main__":
     runs = load_runs()
@@ -66,3 +71,8 @@ if __name__ == "__main__":
     for use_case in USE_CASES:
         counts = Counter(r["ape_match"] for r in runs if r["use_case"] == use_case)
         print(f"ape_match {use_case}: {dict(counts)}")
+    for r in runs:
+        r["n_steps"] = n_steps(r["response"])
+    for use_case in USE_CASES:
+        counts = Counter((r["system"], r["n_steps"]) for r in runs if r["use_case"] == use_case)
+        print(f"n_steps {use_case}: {dict(counts)}")
