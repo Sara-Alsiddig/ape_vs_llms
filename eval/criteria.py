@@ -1,7 +1,7 @@
 import json
 from collections import Counter
 
-from build_rating_sheet import RESULTS_DIR, USE_CASES, parse_llm_response
+from build_rating_sheet import RESULTS_DIR, USE_CASES, parse_llm_response, graph_to_sequence
 from tool_catalog import load_tools
 from isomorphism_checker import check_llm_against_ape
 from graph_adapters import llm_json_to_graph
@@ -29,6 +29,7 @@ def load_runs():
                 "fenced": is_fenced(text),
                 "response": None,
                 "parse_error": None,
+                "meta": json.loads(p.with_name(f"{p.stem}.meta.json").read_text()),
             }
             try:
                 row["response"] = parse_llm_response(text)
@@ -114,6 +115,31 @@ def ape_unsat(use_case):
     # folder means APE certified the spec UNSAT (No2 in our use cases).
     return not (RESULTS_DIR / use_case / "CWL").exists()
 
+def workflow_key(response):
+    # The tool sequence, so identical workflows from different runs compare
+    # equal (same notion of "same workflow" as the rating sheet). None when
+    # there is no workflow.
+    if response is None or response["unsatisfiable"]:
+        return None
+    return graph_to_sequence(llm_json_to_graph(response))
+
+def usage(meta):
+    # Provider-neutral token counts. Anthropic reports cache reads apart from
+    # input_tokens; OpenAI's input_tokens already includes the cached ones.
+    u = meta["usage"]
+    if "cache_read_input_tokens" in u:  # Anthropic
+        cached = u["cache_read_input_tokens"]
+        total_input = u["input_tokens"] + cached + u["cache_creation_input_tokens"]
+        reasoning = u["output_tokens_details"]["thinking_tokens"]
+    else:  # OpenAI
+        cached = u["input_tokens_details"]["cached_tokens"]
+        total_input = u["input_tokens"]
+        reasoning = u["output_tokens_details"]["reasoning_tokens"]
+    return {"input": total_input, "cached_input": cached, "output": u["output_tokens"],
+            "reasoning": reasoning, "seconds": meta["seconds"]}
+
+
+
 if __name__ == "__main__":
     runs = load_runs()
     print(f"{len(runs)} runs")
@@ -152,3 +178,22 @@ if __name__ == "__main__":
     print("UNSAT behaviour:")
     for key in sorted(verdicts):
         print(f"  {key}: {verdicts[key]}")
+
+    for r in runs:
+        r["workflow"] = workflow_key(r["response"])
+    print("Variance (5 runs per cell):")
+    for use_case in USE_CASES:
+        for variant in ("json", "nl"):
+            for system in ("claude", "chatgpt"):
+                cell = [r for r in runs if (r["use_case"], r["variant"], r["system"]) == (use_case, variant, system)]
+                distinct = {r["workflow"] for r in cell if r["workflow"] is not None}
+                in_ape = {r["workflow"] for r in cell if r["ape_match"]}
+                print(f"  {use_case} {variant:4} {system:7}: {len(distinct)} distinct, {len(in_ape)} in APE's 25")
+        for r in runs:
+            r["usage"] = usage(r["meta"])
+    print("LLM usage, mean per run (tokens are not comparable across providers):")
+    for system in ("claude", "chatgpt"):
+        for variant in ("json", "nl"):
+            cell = [r["usage"] for r in runs if (r["system"], r["variant"]) == (system, variant)]
+            mean = {k: round(sum(u[k] for u in cell) / len(cell), 1) for k in cell[0]}
+            print(f"  {system:7} {variant:4} ({len(cell)} runs): {mean}")
