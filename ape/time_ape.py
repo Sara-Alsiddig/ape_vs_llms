@@ -2,6 +2,7 @@ import json
 import re
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -20,13 +21,30 @@ def time_run(use_case, work_dir):
     config["solutions_dir_path"] = str(work_dir / use_case)
     config_path = work_dir / f"{use_case}_config.json"
     config_path.write_text(json.dumps(config))
-    proc = subprocess.run(
+    start = time.perf_counter()
+    proc = subprocess.Popen(
         ["/usr/bin/time", "-l", "java", "-jar", str(JAR), str(config_path)],
-        capture_output=True, text=True, cwd=work_dir, check=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, cwd=work_dir,
     )
-    seconds = float(re.search(r"([\d.]+) real", proc.stderr).group(1))
-    max_rss = int(re.search(r"(\d+)\s+maximum resident set size", proc.stderr).group(1))
-    return {"seconds": seconds, "max_rss_mb": round(max_rss / 1e6, 1)}
+    first, first_25, log = None, None, []
+    for line in proc.stdout:
+        log.append(line)
+        found = re.search(r"Found (\d+) solutions", line)
+        if found:
+            n = int(found.group(1))
+            elapsed = round(time.perf_counter() - start, 1)
+            if first is None and n >= 1:
+                first = elapsed
+            if first_25 is None and n >= 25:
+                first_25 = elapsed
+    if proc.wait() != 0:
+        raise subprocess.CalledProcessError(proc.returncode, proc.args)
+    output = "".join(log)
+
+    
+    seconds = float(re.search(r"([\d.]+) real", output).group(1))
+    max_rss = int(re.search(r"(\d+)\s+maximum resident set size", output).group(1))
+    return {"seconds": seconds, "max_rss_mb": round(max_rss / 1e6, 1), "first_solution_s": first, "first_25_s": first_25}
 
 if __name__ == "__main__":
     rows = []

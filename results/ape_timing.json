@@ -2,121 +2,161 @@
   {
     "use_case": "no1",
     "run": 1,
-    "seconds": 71.91,
-    "max_rss_mb": 3572.0
+    "seconds": 87.6,
+    "max_rss_mb": 3379.1,
+    "first_solution_s": 18.2,
+    "first_25_s": 32.0
   },
   {
     "use_case": "no1",
     "run": 2,
-    "seconds": 71.95,
-    "max_rss_mb": 3622.5
+    "seconds": 75.65,
+    "max_rss_mb": 3233.2,
+    "first_solution_s": 19.2,
+    "first_25_s": 32.2
   },
   {
     "use_case": "no1",
     "run": 3,
-    "seconds": 69.68,
-    "max_rss_mb": 3015.8
+    "seconds": 74.96,
+    "max_rss_mb": 3019.1,
+    "first_solution_s": 18.2,
+    "first_25_s": 31.6
   },
   {
     "use_case": "no1",
     "run": 4,
-    "seconds": 70.93,
-    "max_rss_mb": 3137.8
+    "seconds": 74.52,
+    "max_rss_mb": 3566.7,
+    "first_solution_s": 17.9,
+    "first_25_s": 31.0
   },
   {
     "use_case": "no1",
     "run": 5,
-    "seconds": 70.61,
-    "max_rss_mb": 3062.7
+    "seconds": 72.08,
+    "max_rss_mb": 3417.8,
+    "first_solution_s": 17.6,
+    "first_25_s": 30.7
   },
   {
     "use_case": "no2",
     "run": 1,
-    "seconds": 65.97,
-    "max_rss_mb": 3929.6
+    "seconds": 68.18,
+    "max_rss_mb": 3713.8,
+    "first_solution_s": null,
+    "first_25_s": null
   },
   {
     "use_case": "no2",
     "run": 2,
-    "seconds": 65.42,
-    "max_rss_mb": 3871.6
+    "seconds": 66.74,
+    "max_rss_mb": 3953.0,
+    "first_solution_s": null,
+    "first_25_s": null
   },
   {
     "use_case": "no2",
     "run": 3,
-    "seconds": 65.98,
-    "max_rss_mb": 3427.3
+    "seconds": 67.13,
+    "max_rss_mb": 3189.2,
+    "first_solution_s": null,
+    "first_25_s": null
   },
   {
     "use_case": "no2",
     "run": 4,
-    "seconds": 66.37,
-    "max_rss_mb": 3859.0
+    "seconds": 67.67,
+    "max_rss_mb": 3174.9,
+    "first_solution_s": null,
+    "first_25_s": null
   },
   {
     "use_case": "no2",
     "run": 5,
-    "seconds": 65.74,
-    "max_rss_mb": 3589.5
+    "seconds": 68.15,
+    "max_rss_mb": 3681.9,
+    "first_solution_s": null,
+    "first_25_s": null
   },
   {
     "use_case": "no3",
     "run": 1,
-    "seconds": 79.5,
-    "max_rss_mb": 3541.1
+    "seconds": 82.79,
+    "max_rss_mb": 4156.4,
+    "first_solution_s": 18.0,
+    "first_25_s": 38.9
   },
   {
     "use_case": "no3",
     "run": 2,
-    "seconds": 81.59,
-    "max_rss_mb": 3595.5
+    "seconds": 81.5,
+    "max_rss_mb": 3872.7,
+    "first_solution_s": 17.7,
+    "first_25_s": 38.6
   },
   {
     "use_case": "no3",
     "run": 3,
-    "seconds": 80.44,
-    "max_rss_mb": 3453.6
+    "seconds": 81.77,
+    "max_rss_mb": 4001.4,
+    "first_solution_s": 17.6,
+    "first_25_s": 38.5
   },
   {
     "use_case": "no3",
     "run": 4,
-    "seconds": 80.92,
-    "max_rss_mb": 3756.5
+    "seconds": 81.78,
+    "max_rss_mb": 3292.6,
+    "first_solution_s": 18.0,
+    "first_25_s": 38.8
   },
   {
     "use_case": "no3",
     "run": 5,
-    "seconds": 80.6,
-    "max_rss_mb": 3303.4
+    "seconds": 83.21,
+    "max_rss_mb": 3608.6,
+    "first_solution_s": 18.3,
+    "first_25_s": 39.3
   },
   {
     "use_case": "no4",
     "run": 1,
-    "seconds": 71.31,
-    "max_rss_mb": 3504.6
+    "seconds": 72.87,
+    "max_rss_mb": 3496.1,
+    "first_solution_s": 18.2,
+    "first_25_s": 31.3
   },
   {
     "use_case": "no4",
     "run": 2,
-    "seconds": 70.74,
-    "max_rss_mb": 3430.4
+    "seconds": 73.41,
+    "max_rss_mb": 3545.4,
+    "first_solution_s": 18.1,
+    "first_25_s": 31.3
   },
   {
     "use_case": "no4",
     "run": 3,
-    "seconds": 70.62,
-    "max_rss_mb": 2875.3
+    "seconds": 72.89,
+    "max_rss_mb": 3166.3,
+    "first_solution_s": 18.1,
+    "first_25_s": 31.3
   },
   {
     "use_case": "no4",
     "run": 4,
-    "seconds": 71.48,
-    "max_rss_mb": 3278.6
+    "seconds": 72.31,
+    "max_rss_mb": 3494.8,
+    "first_solution_s": 17.8,
+    "first_25_s": 30.9
   },
   {
     "use_case": "no4",
     "run": 5,
-    "seconds": 70.81,
-    "max_rss_mb": 3346.8
+    "seconds": 71.46,
+    "max_rss_mb": 3041.1,
+    "first_solution_s": 18.0,
+    "first_25_s": 30.8
   }
 ]
