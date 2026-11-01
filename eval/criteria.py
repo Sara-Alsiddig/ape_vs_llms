@@ -1,4 +1,5 @@
 import json
+import csv
 from collections import Counter
 
 from build_rating_sheet import RESULTS_DIR, USE_CASES, parse_llm_response, graph_to_sequence
@@ -189,11 +190,19 @@ if __name__ == "__main__":
                 distinct = {r["workflow"] for r in cell if r["workflow"] is not None}
                 in_ape = {r["workflow"] for r in cell if r["ape_match"]}
                 print(f"  {use_case} {variant:4} {system:7}: {len(distinct)} distinct, {len(in_ape)} in APE's 25")
-        for r in runs:
-            r["usage"] = usage(r["meta"])
+    for r in runs:
+        r["usage"] = usage(r["meta"])
     print("LLM usage, mean per run (tokens are not comparable across providers):")
     for system in ("claude", "chatgpt"):
         for variant in ("json", "nl"):
             cell = [r["usage"] for r in runs if (r["system"], r["variant"]) == (system, variant)]
             mean = {k: round(sum(u[k] for u in cell) / len(cell), 1) for k in cell[0]}
             print(f"  {system:7} {variant:4} ({len(cell)} runs): {mean}")
+    columns = ["use_case", "variant", "system", "run", "fenced", "valid_json", "grounded",
+               "ape_match", "n_steps", "type_chain", "claims_unsat", "workflow", *runs[0]["usage"]]
+    with (RESULTS_DIR / "criteria_table.csv").open("w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
+        writer.writeheader()
+        for r in runs:
+            writer.writerow({**r, **r["usage"], "valid_json": r["parse_error"] is None,
+                            "workflow": " -> ".join(r["workflow"] or ())})
